@@ -13,7 +13,7 @@ var env = {
 	root_path:__dirname,
 	config_path:'/var/qalet_config',
 	sites_path:__dirname + '/sites',
-	site_contents_path:__dirname + '/site_contents'
+	site_contents_path : '/var/site_contents'
 };
 var _dns = {m:{tm:new Date().getTime(), list:[]}, n:{tm:new Date().getTime(), list:[]}};
 var pkg = {
