@@ -47,7 +47,7 @@ CP.serial(
 			var f = function(v) {
 				return function() {
 					exec('cd ' + root_path + '/sites/' + v.space + '/cron_service' + ' &&  node ' + v.script, 
-					     {maxBuffer: 1024 * 1024},
+					     {maxBuffer: 1024 * 2048},
 					     function(error, stdout, stderr) {
 						if (error) {
 							log.write("/var/log/shusiou_cron.log", 'cron::'+v.script,  JSON.stringify(error));
