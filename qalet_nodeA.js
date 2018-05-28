@@ -112,7 +112,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 let sequenceNumberByClient = new Map();		
 io.on("connection", (socket) => {
 	console.log('socket in');
-	socket.emit('announcements', { message: 'A new user has joined!' });
+	io.to(socket.id).emit('announcements', { message: 'A new user has joined!' });
 	
 	
 	console.log('socket on connection');
@@ -127,7 +127,7 @@ io.on("connection", (socket) => {
     });
 	
 	socket.on('event', function(data) {
-		console.log(`the ${socket.id} client sent us this dumb message--->` + data.message);
+		console.log(`the ${socket.id} client sent us this dumb message--->` + data.message + 'socket.id --> ' + socket.id);
 	});	
 	
 	
