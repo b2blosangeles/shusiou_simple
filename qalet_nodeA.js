@@ -32,6 +32,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(compression({level:9}));
 
 app.all('*', function(req, res, next) {
+	console.log('---niu---');
        res.header("Access-Control-Allow-Origin", "*");
        res.header("Access-Control-Allow-Headers", "X-Requested-With");
        res.header('Access-Control-Allow-Headers', 'Content-Type');
