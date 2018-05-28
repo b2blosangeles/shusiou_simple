@@ -122,6 +122,12 @@ https_server.on("connection", (socket) => {
         sequenceNumberByClient.delete(socket);
         console.info(`Client gone [id=${socket.id}]`);
     });
+	
+	socket.on('event', function(data) {
+        console.log('A client sent us this dumb message:', data.message);
+    });	
+	
+	
 });		
 		
 		
