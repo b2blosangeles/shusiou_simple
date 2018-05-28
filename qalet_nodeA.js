@@ -1,5 +1,6 @@
 var 
-express = require('./package/express/node_modules/express'),   
+express = require('./package/express/node_modules/express'),
+socket_io = require('./package/socket_io/node_modules/socket.io'),    
 bodyParser = require('./package/body-parser/node_modules/body-parser'),
 compression = require('./package/compression/node_modules/compression'),
 tls = require('tls'),  
@@ -104,14 +105,16 @@ pkg.fs.exists(cert_folder, function(exists) {
 			}
 		};
 		var https_server =  require('https').createServer(httpsOptions, app);
-		var io = require('./package/socket_io/node_modules/socket.io').listen(https_server);
+		app.socket = {
+			ios : socket_io.listen(https_server)
+		}
 		https_server.listen(1443, function() {
 				console.log('Started server on port 1443 at' + new Date() + '');
 			
 				let sequenceNumberByClient = new Map();		
-				io.on("connection", (socket) => {
+				 app.socket.ios.on("connection", (socket) => {
 					console.log('socket in');
-					io.to(socket.id).emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
+					 app.socket.ios.to(socket.id).emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
 
 
 					console.log('socket on connection');
@@ -126,7 +129,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 				    });
 
 					socket.on('event', function(data) {
-						console.log(`the ${socket.id} client sent us this dumb message--->` + data.message + 'socket.id --> ' + socket.id);
+						console.log(`the ${socket.id} client sent us this dumb message--->` + data.message + ' socket.id --> ' + socket.id);
 					});	
 
 
