@@ -109,13 +109,12 @@ pkg.fs.exists(cert_folder, function(exists) {
 				console.log('Started server on port 1443 at' + new Date() + '');
 		});
 		
-//let
-  //  sequenceNumberByClient = new Map();		
+let sequenceNumberByClient = new Map();		
 io.on("connection", (socket) => {
 	console.log('socket in');
 	socket.emit('announcements', { message: 'A new user has joined!' });
 	
-	/*
+	
 	console.log('socket on connection');
     console.info(`Client connected [id=${socket.id}]`);
     // initialize this client's sequence number
@@ -130,7 +129,7 @@ io.on("connection", (socket) => {
 	socket.on('event', function(data) {
         console.log('A client sent us this dumb message:', data.message);
     });	
-	*/
+	
 	
 });		
 		
