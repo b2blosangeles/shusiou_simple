@@ -107,31 +107,33 @@ pkg.fs.exists(cert_folder, function(exists) {
 		var io = require('./package/socket_io/node_modules/socket.io').listen(https_server);
 		https_server.listen(1443, function() {
 				console.log('Started server on port 1443 at' + new Date() + '');
+			
+				let sequenceNumberByClient = new Map();		
+				io.on("connection", (socket) => {
+					console.log('socket in');
+					io.to(socket.id+'5').emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
+
+
+					console.log('socket on connection');
+				    console.info(`Client connected [id=${socket.id}]`);
+				    // initialize this client's sequence number
+				    sequenceNumberByClient.set(socket, 1);
+
+				    // when socket disconnects, remove it from the list:
+				    socket.on("disconnect", () => {
+					sequenceNumberByClient.delete(socket);
+					console.info(`Client gone [id=${socket.id}]`);
+				    });
+
+					socket.on('event', function(data) {
+						console.log(`the ${socket.id} client sent us this dumb message--->` + data.message + 'socket.id --> ' + socket.id);
+					});	
+
+
+				});				
 		});
 		
-let sequenceNumberByClient = new Map();		
-io.on("connection", (socket) => {
-	console.log('socket in');
-	io.to(socket.id+'5').emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
 	
-	
-	console.log('socket on connection');
-    console.info(`Client connected [id=${socket.id}]`);
-    // initialize this client's sequence number
-    sequenceNumberByClient.set(socket, 1);
-
-    // when socket disconnects, remove it from the list:
-    socket.on("disconnect", () => {
-        sequenceNumberByClient.delete(socket);
-        console.info(`Client gone [id=${socket.id}]`);
-    });
-	
-	socket.on('event', function(data) {
-		console.log(`the ${socket.id} client sent us this dumb message--->` + data.message + 'socket.id --> ' + socket.id);
-	});	
-	
-	
-});		
 		
 		
 	});
