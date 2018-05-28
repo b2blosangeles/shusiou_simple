@@ -111,7 +111,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 		
 //let
   //  sequenceNumberByClient = new Map();		
-https_server.on("connection", (socket) => {
+io.on("connection", (socket) => {
 	console.log('socket in');
 	socket.emit('announcements', { message: 'A new user has joined!' });
 	
