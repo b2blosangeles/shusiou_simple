@@ -4,7 +4,8 @@ socket_io = require('./package/socket_io/node_modules/socket.io'),
 bodyParser = require('./package/body-parser/node_modules/body-parser'),
 compression = require('./package/compression/node_modules/compression'),
 tls = require('tls'),  
-app			= express(),
+app = express(),
+app_socket = {};
 expireTime	= 604800000,
 port 		= 180;
 
@@ -74,6 +75,8 @@ var server = require('http').createServer(app);
 
 server.listen(port, function() {
 	log.write("/var/log/shusiou_master_reboot.log", 'shusiou master boot up', 'Started server on port ' + port + '!'); 
+	app_socket.io =  socket_io.listen(https_server);
+	app_socket.io.on("connection", (socket) => {});
 });
 
 var cert_folder = '/var/cert/sites/';
@@ -110,9 +113,9 @@ pkg.fs.exists(cert_folder, function(exists) {
 		}
 		https_server.listen(1443, function() {
 				console.log('Started server on port 1443 at' + new Date() + '');
-			
+				app_socket.ios =  socket_io.listen(https_server);
 				let sequenceNumberByClient = new Map();		
-				 app.socket.ios.on("connection", (socket) => {
+				 app_socket.ios.on("connection", (socket) => {
 					console.log('socket in');
 					 app.socket.ios.to(socket.id).emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
 
