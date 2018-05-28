@@ -127,7 +127,7 @@ io.on("connection", (socket) => {
     });
 	
 	socket.on('event', function(data) {
-        console.log('the ' + [${socket.id}] + ' client sent us this dumb message:', data.message);
+        console.log('the ' + [${socket.id}] + ' client sent us this dumb message:' + data.message);
     });	
 	
 	
