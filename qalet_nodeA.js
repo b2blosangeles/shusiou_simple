@@ -107,10 +107,9 @@ pkg.fs.exists(cert_folder, function(exists) {
 		var io = require('./package/socket_io/node_modules/socket.io').listen(https_server);
 		https_server.listen(1443, function() {
 				console.log('Started server on port 1443 at' + new Date() + '');
-		});		
-	});
-    }
-});
+		});
+		
+		
 https_server.on("connection", (socket) => {
 	console.log('socket on connection');
     console.info(`Client connected [id=${socket.id}]`);
@@ -122,5 +121,11 @@ https_server.on("connection", (socket) => {
         sequenceNumberByClient.delete(socket);
         console.info(`Client gone [id=${socket.id}]`);
     });
+});		
+		
+		
+	});
+    }
 });
+
 
