@@ -103,7 +103,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 			}
 		};
 		var https_server =  require('https').createServer(httpsOptions, app);
-		var io = require('./package/socket_io/node_modules/socket_io').listen(https_server);
+		var io = require('./package/socket_io/node_modules/socket.io').listen(https_server);
 		https_server.listen(1443, function() {
 				console.log('Started server on port 443 at' + new Date() + '');
 		});		
