@@ -75,7 +75,7 @@ var server = require('http').createServer(app);
 
 server.listen(port, function() {
 	log.write("/var/log/shusiou_master_reboot.log", 'shusiou master boot up', 'Started server on port ' + port + '!'); 
-	app_socket.io =  socket_io.listen(https_server);
+	app_socket.io =  socket_io.listen(server);
 	app_socket.io.on("connection", (socket) => {});
 });
 
@@ -108,9 +108,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 			}
 		};
 		var https_server =  require('https').createServer(httpsOptions, app);
-		app.socket = {
-			ios : socket_io.listen(https_server)
-		}
+
 		https_server.listen(1443, function() {
 				console.log('Started server on port 1443 at' + new Date() + '');
 				app_socket.ios =  socket_io.listen(https_server);
