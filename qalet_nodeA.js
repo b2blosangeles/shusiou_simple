@@ -115,7 +115,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 				let sequenceNumberByClient = new Map();		
 				 app_socket.ios.on("connection", (socket) => {
 					console.log('socket in');
-					 app.socket.ios.to(socket.id).emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
+					 app_socket.ios.to(socket.id).emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
 
 
 					console.log('socket on connection');
