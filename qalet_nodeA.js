@@ -114,11 +114,11 @@ https_server.on("connection", (socket) => {
 	console.log('socket on connection');
     console.info(`Client connected [id=${socket.id}]`);
     // initialize this client's sequence number
-    sequenceNumberByClient.set(socket, 1);
+   // sequenceNumberByClient.set(socket, 1);
 
     // when socket disconnects, remove it from the list:
     socket.on("disconnect", () => {
-        sequenceNumberByClient.delete(socket);
+     //   sequenceNumberByClient.delete(socket);
         console.info(`Client gone [id=${socket.id}]`);
     });
 });		
