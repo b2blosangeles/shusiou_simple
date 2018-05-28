@@ -68,7 +68,7 @@ app.post(/(.+)$/i, function (req, res) {
 
 
 var server = require('http').createServer(app),
-    io = require('socket.io').listen(app);
+    io = require('./package/socket.io').listen(app);
 
 server.listen(port, function() {
 	log.write("/var/log/shusiou_master_reboot.log", 'shusiou master boot up', 'Started server on port ' + port + '!'); 
