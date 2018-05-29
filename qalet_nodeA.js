@@ -41,7 +41,7 @@ app.all('*', function(req, res, next) {
 	console.log(_socket_id);
 	setTimeout( function() {
 		app_socket.ios.to('VIDEO_112').emit('announcements', { message: 'A new user ' + _socket_id + ' has joined!' });
-		console.log(app_socket.ios.sockets.clients('VIDEO_112'));
+		console.log(app_socket.ios.in('VIDEO_112').clients);
 	}, 1000);
 	app_socket.ios.engine.generateId = function(socket_req) {
 		return _socket_id;
