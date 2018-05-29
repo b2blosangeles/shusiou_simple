@@ -114,7 +114,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 				app_socket.ios =  socket_io.listen(https_server);
 				app_socket.ios.engine.generateId = function(req) {
 					console.log(req.url);
-					return 1;
+					return new Date().getTime();
 				};
 				let sequenceNumberByClient = new Map();		
 				 app_socket.ios.on("connection", (socket) => {
