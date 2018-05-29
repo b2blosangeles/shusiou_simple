@@ -130,12 +130,13 @@ pkg.fs.exists(cert_folder, function(exists) {
 					socket.on('createRoom', function(room){
 						console.log('socket in- https')
 						console.log('socket in-1-' + socket.id + '---' + room);
-						socket.join(room);
-						io.to('VIDEO_112').emit('announcements', { message: 'A new user https ' + socket.id + ' has joined!' });
-						io.in('VIDEO_112').clients((err, clients) => {
-							console.log('socket in- https')
-							console.log(clients);
+						socket.join(room, function() {
+							io.in('VIDEO_112').clients((err, clients) => {
+								console.log('socket in- https')
+								console.log(clients);
+							});
 						});
+						io.to('VIDEO_112').emit('announcements', { message: 'A new user https ' + socket.id + ' has joined!' });
 					});
 					sequenceNumberByClient.set(socket, 1);
 					socket.on("disconnect", () => {
