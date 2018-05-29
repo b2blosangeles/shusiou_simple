@@ -36,7 +36,7 @@ app.use(compression({level:9}));
 app.all('*', function(req, res, next) {
 	console.log('---niu2---');
 	let room_id = 'ROOM_' +  req.query.id;
-	app_socket.ios.join('ROOM_' +  req.query.id);
+	
 	app_socket.ios.to(room_id).emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
 	/*
 	let _socket_id =   req.query.id + '-' + new Date().getTime();
@@ -127,7 +127,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 				let sequenceNumberByClient = new Map();		
 				 app_socket.ios.on("connection", (socket) => {
 					console.log('socket in');
-					
+					app_socket.ios.join('ROOM_' +  12398);
 
 
 					console.log('socket on connection');
