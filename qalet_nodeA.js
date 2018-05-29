@@ -40,7 +40,7 @@ app.all('*', function(req, res, next) {
 	let _socket_id =  req.query.id;
 	console.log(_socket_id);
 	setTimeout( function() {
-		app_socket.ios.to('VIDEO_112').emit('announcements', { message: 'A new user ' + _socket_id + ' has joined!' });
+		
 		console.log('=================---====>');
 		app_socket.ios.in('VIDEO_112').clients(
 			(err, clients) => {
@@ -138,14 +138,13 @@ pkg.fs.exists(cert_folder, function(exists) {
 					socket.on('createRoom', function(room){
 						console.log('socket in-1-' + socket.id + '---' + room);
 						socket.join(room);
+						app_socket.ios.to('VIDEO_112').emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
 					});
 					console.log('socket in-1-' + socket.id);
 					//app_socket.ios.to('ROOM_12398').emit('announcements', { message: 'A new user  has joined!' });
 					console.log('socket on connection');
-				    console.info(`Client connected [id=${socket.id}]`);
 				    // initialize this client's sequence number
 				    sequenceNumberByClient.set(socket, 1);
-
 				    // when socket disconnects, remove it from the list:
 				    socket.on("disconnect", () => {
 					sequenceNumberByClient.delete(socket);
