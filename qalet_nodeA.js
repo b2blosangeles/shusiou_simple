@@ -112,6 +112,9 @@ pkg.fs.exists(cert_folder, function(exists) {
 		https_server.listen(1443, function() {
 				console.log('Started server on port 1443 at' + new Date() + '');
 				app_socket.ios =  socket_io.listen(https_server);
+				app_socket.ios.engine.generateId = function(req) {
+					return 1;
+				};
 				let sequenceNumberByClient = new Map();		
 				 app_socket.ios.on("connection", (socket) => {
 					console.log('socket in');
