@@ -34,29 +34,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(compression({level:9}));
 
 app.all('*', function(req, res, next) {
-	/*
-	console.log('socket in --2--');
-	
-	
-	let _socket_id =  req.query.id;
-	console.log(_socket_id);
-	setTimeout( function() {
-		
-		console.log('=================---====>');
-		app_socket.ios.in('VIDEO_112').clients(
-			(err, clients) => {
-				console.log(clients);
-			}
-		);
-		console.log('<===========---=====');
-	});
-	*/
-	/*
-	app_socket.ios.engine.generateId = function(socket_req) {
-		return _socket_id;
-	};
-	*/
-	
        res.header("Access-Control-Allow-Origin", "*");
        res.header("Access-Control-Allow-Headers", "X-Requested-With");
        res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -97,8 +74,23 @@ var server = require('http').createServer(app);
 
 server.listen(port, function() {
 	log.write("/var/log/shusiou_master_reboot.log", 'shusiou master boot up', 'Started server on port ' + port + '!'); 
-	app_socket.io =  socket_io.listen(server);
-	app_socket.io.on("connection", (socket) => {});
+	let io =  socket_io.listen(http_server);
+	let sequenceNumberByClient = new Map();		
+	io.on("connection", (socket) => {
+		socket.on('createRoom', function(room){
+			console.log('socket in- http 1-' + socket.id + '---' + room);
+			socket.join(room);
+			io.to('VIDEO_112').emit('announcements', { message: 'A new user http ' + socket.id + ' has joined!' });
+		});
+		sequenceNumberByClient.set(socket, 1);
+		socket.on("disconnect", () => {
+			sequenceNumberByClient.delete(socket);
+			io.in('VIDEO_112').clients((err, clients) => {
+				console.log('socket in- http')
+				console.log(clients);
+			});
+		});
+	});
 });
 
 var cert_folder = '/var/cert/sites/';
@@ -133,18 +125,20 @@ pkg.fs.exists(cert_folder, function(exists) {
 
 		https_server.listen(1443, function() {
 				console.log('Started server on port 1443 at' + new Date() + '');
-				let ios =  socket_io.listen(https_server);
+				let io =  socket_io.listen(https_server);
 				let sequenceNumberByClient = new Map();		
-				ios.on("connection", (socket) => {
+				io.on("connection", (socket) => {
 					socket.on('createRoom', function(room){
+						console.log('socket in- https')
 						console.log('socket in-1-' + socket.id + '---' + room);
 						socket.join(room);
-						ios.to('VIDEO_112').emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
+						io.to('VIDEO_112').emit('announcements', { message: 'A new user https ' + socket.id + ' has joined!' });
 					});
 					sequenceNumberByClient.set(socket, 1);
 					socket.on("disconnect", () => {
 						sequenceNumberByClient.delete(socket);
-						ios.in('VIDEO_112').clients((err, clients) => {
+						io.in('VIDEO_112').clients((err, clients) => {
+							console.log('socket in- https')
 							console.log(clients);
 						});
 					});
