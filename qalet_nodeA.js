@@ -127,7 +127,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 				let sequenceNumberByClient = new Map();		
 				 app_socket.ios.on("connection", (socket) => {
 					console.log('socket in');
-					app_socket.ios.join('ROOM_' +  12398);
+					socket.join('ROOM_' +  12398);
 
 
 					console.log('socket on connection');
