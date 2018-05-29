@@ -129,7 +129,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 					console.log('socket in1');
 					socket.join('ROOM_12398');
 
-					app_socket.ios.to(room_id).emit('announcements', { message: 'A new user  has joined!' });
+					app_socket.ios.to('ROOM_12398').emit('announcements', { message: 'A new user  has joined!' });
 					console.log('socket on connection');
 				    console.info(`Client connected [id=${socket.id}]`);
 				    // initialize this client's sequence number
