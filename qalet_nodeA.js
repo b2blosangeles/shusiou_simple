@@ -153,11 +153,12 @@ pkg.fs.exists(cert_folder, function(exists) {
 				    // when socket disconnects, remove it from the list:
 					
 
-					/*
+					
 					socket.on('event', function(data) {
-						console.log(`the ${socket.id} client sent us this dumb message--->` + data.message + ' socket.id --> ' + socket.id);
+						ios.in('VIDEO_112').clients((err, clients) => {
+							console.log(clients);
+						});
 					});
-					*/
 
 
 				});				
