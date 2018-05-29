@@ -48,7 +48,7 @@ app.all('*', function(req, res, next) {
 			}
 		);
 		console.log('<===========---=====');
-	},1);
+	},1000);
 	app_socket.ios.engine.generateId = function(socket_req) {
 		return _socket_id;
 	};
