@@ -34,12 +34,10 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(compression({level:9}));
 
 app.all('*', function(req, res, next) {
-	console.log('---niu2---');
-	let room_id = 'ROOM_' +  req.query.id;
 	console.log('socket in --2--');
 	
 	
-	let _socket_id =   room_id + '-' + new Date().getTime();
+	let _socket_id =  req.query.id;
 	console.log(_socket_id);
 	
 	app_socket.ios.to('VIDEO_112').emit('announcements', { message: 'A new user ' + _socket_id + ' has joined!' });
