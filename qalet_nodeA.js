@@ -133,6 +133,10 @@ pkg.fs.exists(cert_folder, function(exists) {
 						console.log('socket in-1-' + socket.id + '---' + room);
 						socket.join(room);
 						io.to('VIDEO_112').emit('announcements', { message: 'A new user https ' + socket.id + ' has joined!' });
+						io.in('VIDEO_112').clients((err, clients) => {
+							console.log('socket in- https')
+							console.log(clients);
+						});
 					});
 					sequenceNumberByClient.set(socket, 1);
 					socket.on("disconnect", () => {
