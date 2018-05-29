@@ -144,23 +144,10 @@ pkg.fs.exists(cert_folder, function(exists) {
 					sequenceNumberByClient.set(socket, 1);
 					socket.on("disconnect", () => {
 						sequenceNumberByClient.delete(socket);
-					});					 
-					console.log('socket in-1-' + socket.id);
-					//app_socket.ios.to('ROOM_12398').emit('announcements', { message: 'A new user  has joined!' });
-					console.log('socket on connection');
-				    // initialize this client's sequence number
-				    
-				    // when socket disconnects, remove it from the list:
-					
-
-					
-					socket.on('event', function(data) {
 						ios.in('VIDEO_112').clients((err, clients) => {
 							console.log(clients);
 						});
 					});
-
-
 				});				
 		});
 		
