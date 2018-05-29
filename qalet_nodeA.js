@@ -35,9 +35,9 @@ app.use(compression({level:9}));
 
 app.all('*', function(req, res, next) {
 	console.log('---niu1---');
-	app_socket.ios.engine.generateId = function(req) {
+	app_socket.ios.engine.generateId = function(req0) {
 		console.log(req.url);
-		return new Date().getTime();
+		return req.query.id + '-' + new Date().getTime();
 	};	
        res.header("Access-Control-Allow-Origin", "*");
        res.header("Access-Control-Allow-Headers", "X-Requested-With");
