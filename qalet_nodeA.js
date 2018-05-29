@@ -37,7 +37,7 @@ app.all('*', function(req, res, next) {
 	console.log('---niu2---');
 	let room_id = 'ROOM_' +  req.query.id;
 	
-	app_socket.ios.to(room_id).emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
+	app_socket.ios.to(room_id).emit('announcements', { message: 'A new user  has joined!' });
 	/*
 	let _socket_id =   req.query.id + '-' + new Date().getTime();
 	console.log(_socket_id);
