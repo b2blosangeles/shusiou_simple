@@ -37,10 +37,13 @@ app.all('*', function(req, res, next) {
 	console.log('---niu2---');
 	let room_id = 'ROOM_' +  req.query.id;
 	console.log('socket in --2--');
-	app_socket.ios.to(room_id).emit('announcements', { message: 'A new user  has joined!' });
+	
 	
 	let _socket_id =   room_id + '-' + new Date().getTime();
 	console.log(_socket_id);
+	
+	app_socket.ios.to('VIDEO_112').emit('announcements', { message: 'A new user ' + _socket_id + ' has joined!' });
+	
 	app_socket.ios.engine.generateId = function(socket_req) {
 		return _socket_id;
 	};
@@ -125,10 +128,10 @@ pkg.fs.exists(cert_folder, function(exists) {
 
 				let sequenceNumberByClient = new Map();		
 				 app_socket.ios.on("connection", (socket) => {
-					 
+					socket.on('createRoom', function(room){
+						socket.join(room);
+					});
 					console.log('socket in-1-' + socket.id);
-					socket.join('ROOM_12398');
-
 					//app_socket.ios.to('ROOM_12398').emit('announcements', { message: 'A new user  has joined!' });
 					console.log('socket on connection');
 				    console.info(`Client connected [id=${socket.id}]`);
