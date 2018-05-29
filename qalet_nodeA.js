@@ -38,14 +38,13 @@ app.all('*', function(req, res, next) {
 	let room_id = 'ROOM_' +  req.query.id;
 	console.log('socket in2');
 	app_socket.ios.to(room_id).emit('announcements', { message: 'A new user  has joined!' });
-	/*
-	let _socket_id =   req.query.id + '-' + new Date().getTime();
+	
+	let _socket_id =   room_id + '-' + new Date().getTime();
 	console.log(_socket_id);
 	app_socket.ios.engine.generateId = function(socket_req) {
-		console.log(req.url);
 		return _socket_id;
 	};
-	*/
+	
        res.header("Access-Control-Allow-Origin", "*");
        res.header("Access-Control-Allow-Headers", "X-Requested-With");
        res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -126,7 +125,8 @@ pkg.fs.exists(cert_folder, function(exists) {
 
 				let sequenceNumberByClient = new Map();		
 				 app_socket.ios.on("connection", (socket) => {
-					console.log('socket in1');
+					 
+					console.log('socket in-1-' + socket.id);
 					socket.join('ROOM_12398');
 
 					app_socket.ios.to('ROOM_12398').emit('announcements', { message: 'A new user  has joined!' });
