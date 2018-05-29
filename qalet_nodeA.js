@@ -74,7 +74,7 @@ var server = require('http').createServer(app);
 
 server.listen(port, function() {
 	log.write("/var/log/shusiou_master_reboot.log", 'shusiou master boot up', 'Started server on port ' + port + '!'); 
-	let io =  socket_io.listen(http_server);
+	let io =  socket_io.listen(server);
 	let sequenceNumberByClient = new Map();		
 	io.on("connection", (socket) => {
 		socket.on('createRoom', function(room){
