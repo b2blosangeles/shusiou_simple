@@ -23,7 +23,8 @@ var pkg = {
 	request		:require('./package/request/node_modules/request'),
 	syntaxError	:require('./package/syntax-error/node_modules/syntax-error'),
 	fs		:require('fs'),
-	exec		:require('child_process').exec			
+	exec		:require('child_process').exec,
+	io		:require('./modules/io/node_modules/io')
 };
 
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
@@ -73,28 +74,7 @@ var server = require('http').createServer(app);
 
 server.listen(port, function() {
 	log.write("/var/log/shusiou_master_reboot.log", 'shusiou master boot up', 'Started server on port ' + port + '!'); 
-	let io =  socket_io.listen(server);
-	let sequenceNumberByClient = new Map();		
-	io.on("connection", (socket) => {
-		socket.on('createRoom', function(room){
-			console.log('socket in- http 1-' + socket.id + '---' + room);
-			socket.join(room, function() {
-				io.in('VIDEO_112').clients((err, clients) => {
-					console.log('socket in- http')
-					console.log(clients);
-				});
-			});
-			io.to('VIDEO_112').emit('announcements', { message: 'A new user http ' + socket.id + ' has joined!' });
-		});
-		sequenceNumberByClient.set(socket, 1);
-		socket.on("disconnect", () => {
-			sequenceNumberByClient.delete(socket);
-			io.in('VIDEO_112').clients((err, clients) => {
-				console.log('socket in- http')
-				console.log(clients);
-			});
-		});
-	});
+	let io =  new pkg.io(env, pkg, server);
 });
 
 let IO = require('./modules/io/node_modules/io');
@@ -132,7 +112,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 
 		https_server.listen(1443, function() {
 				console.log('Started server on port 1443 at' + new Date() + '');
-				let io =  new IO(env, https_server);
+				let io =  new pkg.io(env, pkg, https_server);
 						
 		});
 		
