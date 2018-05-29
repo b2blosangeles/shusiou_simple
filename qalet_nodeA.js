@@ -139,7 +139,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 					socket.on('createRoom', function(room){
 						console.log('socket in-1-' + socket.id + '---' + room);
 						socket.join(room);
-						app_socket.ios.to('VIDEO_112').emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
+						ios.to('VIDEO_112').emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
 					});
 					sequenceNumberByClient.set(socket, 1);
 					socket.on("disconnect", () => {
