@@ -140,16 +140,18 @@ pkg.fs.exists(cert_folder, function(exists) {
 						socket.join(room);
 						app_socket.ios.to('VIDEO_112').emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
 					});
+					// sequenceNumberByClient.set(socket, 1);
+					socket.on("disconnect", () => {
+						sequenceNumberByClient.delete(socket);
+					});					 
 					console.log('socket in-1-' + socket.id);
 					//app_socket.ios.to('ROOM_12398').emit('announcements', { message: 'A new user  has joined!' });
 					console.log('socket on connection');
 				    // initialize this client's sequence number
-				    sequenceNumberByClient.set(socket, 1);
+				    
 				    // when socket disconnects, remove it from the list:
-				    socket.on("disconnect", () => {
-					sequenceNumberByClient.delete(socket);
-					console.info(`Client gone [id=${socket.id}]`);
-				    });
+					
+
 
 					socket.on('event', function(data) {
 						console.log(`the ${socket.id} client sent us this dumb message--->` + data.message + ' socket.id --> ' + socket.id);
