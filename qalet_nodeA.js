@@ -49,11 +49,11 @@ app.all('*', function(req, res, next) {
 		);
 		console.log('<===========---=====');
 	});
-	/*
+	
 	app_socket.ios.engine.generateId = function(socket_req) {
 		return _socket_id;
 	};
-	*/
+	
 	
        res.header("Access-Control-Allow-Origin", "*");
        res.header("Access-Control-Allow-Headers", "X-Requested-With");
