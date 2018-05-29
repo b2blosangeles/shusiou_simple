@@ -34,6 +34,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(compression({level:9}));
 
 app.all('*', function(req, res, next) {
+	/*
 	console.log('socket in --2--');
 	
 	
@@ -49,6 +50,7 @@ app.all('*', function(req, res, next) {
 		);
 		console.log('<===========---=====');
 	});
+	*/
 	/*
 	app_socket.ios.engine.generateId = function(socket_req) {
 		return _socket_id;
@@ -131,16 +133,15 @@ pkg.fs.exists(cert_folder, function(exists) {
 
 		https_server.listen(1443, function() {
 				console.log('Started server on port 1443 at' + new Date() + '');
-				app_socket.ios =  socket_io.listen(https_server);
-
+				let ios =  socket_io.listen(https_server);
 				let sequenceNumberByClient = new Map();		
-				 app_socket.ios.on("connection", (socket) => {
+				ios.on("connection", (socket) => {
 					socket.on('createRoom', function(room){
 						console.log('socket in-1-' + socket.id + '---' + room);
 						socket.join(room);
 						app_socket.ios.to('VIDEO_112').emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
 					});
-					// sequenceNumberByClient.set(socket, 1);
+					sequenceNumberByClient.set(socket, 1);
 					socket.on("disconnect", () => {
 						sequenceNumberByClient.delete(socket);
 					});					 
@@ -152,10 +153,11 @@ pkg.fs.exists(cert_folder, function(exists) {
 				    // when socket disconnects, remove it from the list:
 					
 
-
+					/*
 					socket.on('event', function(data) {
 						console.log(`the ${socket.id} client sent us this dumb message--->` + data.message + ' socket.id --> ' + socket.id);
-					});	
+					});
+					*/
 
 
 				});				
