@@ -70,7 +70,6 @@ app.post(/(.+)$/i, function (req, res) {
 
 
 var server = require('http').createServer(app);
-    
 
 server.listen(port, function() {
 	log.write("/var/log/shusiou_master_reboot.log", 'shusiou master boot up', 'Started server on port ' + port + '!'); 
