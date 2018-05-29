@@ -78,7 +78,12 @@ server.listen(port, function() {
 	io.on("connection", (socket) => {
 		socket.on('createRoom', function(room){
 			console.log('socket in- http 1-' + socket.id + '---' + room);
-			socket.join(room);
+			socket.join(room, function() {
+				io.in('VIDEO_112').clients((err, clients) => {
+					console.log('socket in- http')
+					console.log(clients);
+				});
+			});
 			io.to('VIDEO_112').emit('announcements', { message: 'A new user http ' + socket.id + ' has joined!' });
 		});
 		sequenceNumberByClient.set(socket, 1);
