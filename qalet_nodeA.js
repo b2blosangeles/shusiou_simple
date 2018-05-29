@@ -34,13 +34,18 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(compression({level:9}));
 
 app.all('*', function(req, res, next) {
-	console.log('---niu1---');
+	console.log('---niu2---');
+	let room_id = 'ROOM_' +  req.query.id;
+	app_socket.ios.join('ROOM_' +  req.query.id);
+	app_socket.ios.to(room_id).emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
+	/*
 	let _socket_id =   req.query.id + '-' + new Date().getTime();
 	console.log(_socket_id);
 	app_socket.ios.engine.generateId = function(socket_req) {
 		console.log(req.url);
 		return _socket_id;
-	};	
+	};
+	*/
        res.header("Access-Control-Allow-Origin", "*");
        res.header("Access-Control-Allow-Headers", "X-Requested-With");
        res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -122,7 +127,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 				let sequenceNumberByClient = new Map();		
 				 app_socket.ios.on("connection", (socket) => {
 					console.log('socket in');
-					 app_socket.ios.to(socket.id).emit('announcements', { message: 'A new user ' + socket.id + ' has joined!' });
+					
 
 
 					console.log('socket on connection');
