@@ -97,7 +97,7 @@ server.listen(port, function() {
 	});
 });
 
-let IO = require('./module/io/node_modules/io');
+let IO = require('./modules/io/node_modules/io');
 
 
 var cert_folder = '/var/cert/sites/';
