@@ -21,7 +21,8 @@ var pkg = {
 	request		:require('./package/request/node_modules/request'),
 	syntaxError	:require('./package/syntax-error/node_modules/syntax-error'),
 	fs		:require('fs'),
-	exec		:require('child_process').exec			
+	exec		:require('child_process').exec,
+	io		:require('./modules/io/node_modules/io')			
 };
 
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
@@ -70,6 +71,7 @@ app.post(/(.+)$/i, function (req, res) {
 var server = require('http').createServer(app);
 server.listen(port, function() {
 	log.write("/var/log/shusiou_master_reboot.log", 'shusiou master boot up', 'Started server on port ' + port + '!'); 
+	let io =  new pkg.io(env, pkg, server);
 });
 
 var cert_folder = '/var/cert/sites/';
@@ -102,7 +104,8 @@ pkg.fs.exists(cert_folder, function(exists) {
 		};
 		var https_server =  require('https').createServer(httpsOptions, app);
 		https_server.listen(443, function() {
-				console.log('Started server on port 443 at' + new Date() + '');
+			console.log('Started server on port 443 at' + new Date() + '');
+			let io =  new pkg.io(env, pkg, https_server);
 		});		
 	});
     }
