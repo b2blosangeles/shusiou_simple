@@ -34,7 +34,11 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(compression({level:9}));
 
 app.all('*', function(req, res, next) {
-	console.log('---niu---');
+	console.log('---niu1---');
+	app_socket.ios.engine.generateId = function(req) {
+		console.log(req.url);
+		return new Date().getTime();
+	};	
        res.header("Access-Control-Allow-Origin", "*");
        res.header("Access-Control-Allow-Headers", "X-Requested-With");
        res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -112,10 +116,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 		https_server.listen(1443, function() {
 				console.log('Started server on port 1443 at' + new Date() + '');
 				app_socket.ios =  socket_io.listen(https_server);
-				app_socket.ios.engine.generateId = function(req) {
-					console.log(req.url);
-					return new Date().getTime();
-				};
+
 				let sequenceNumberByClient = new Map();		
 				 app_socket.ios.on("connection", (socket) => {
 					console.log('socket in');
