@@ -22,7 +22,7 @@
 				return v;
 			}			
 			if ( me.isIp(req.headers.host) && 
-			    	['master', 'node', 'root'].indexOf(req.query['_route']) !== -1) {
+			    	['master', 'node', 'root', 'comm'].indexOf(req.query['_route']) !== -1) {
 				v.site_path = v.sites_path + '/' + req.query['_route'];
 				return v;				
 			} else {
