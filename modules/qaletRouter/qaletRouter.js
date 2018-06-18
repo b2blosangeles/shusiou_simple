@@ -12,7 +12,11 @@
 			if(host.match(/^master([0-9+])(^.|)\./)) { 
 				v.site_path = v.sites_path + '/' + 'master';
 				return v;
-			} 			
+			}
+			if(host.match(/^comm([0-9+])(^.|)\./)) { 
+				v.site_path = v.sites_path + '/' + 'comm';
+				return v;
+			} 
 			if(host.match(/^(www|dev|qa|)\.shusiou\.(com|win)$/)) { 
 				v.site_path = v.sites_path + '/' + 'root';
 				return v;
