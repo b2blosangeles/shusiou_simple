@@ -12,13 +12,17 @@
 			if(host.match(/^master([0-9+])(^.|)\./)) { 
 				v.site_path = v.sites_path + '/' + 'master';
 				return v;
-			} 			
+			}
+			if(host.match(/^comm([0-9+])(^.|)\./)) { 
+				v.site_path = v.sites_path + '/' + 'comm';
+				return v;
+			} 
 			if(host.match(/^(www|dev|qa|)\.shusiou\.(com|win)$/)) { 
 				v.site_path = v.sites_path + '/' + 'root';
 				return v;
 			}			
 			if ( me.isIp(req.headers.host) && 
-			    	['master', 'node', 'root'].indexOf(req.query['_route']) !== -1) {
+			    	['master', 'node', 'root', 'comm'].indexOf(req.query['_route']) !== -1) {
 				v.site_path = v.sites_path + '/' + req.query['_route'];
 				return v;				
 			} else {
