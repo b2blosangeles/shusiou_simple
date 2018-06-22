@@ -1,7 +1,7 @@
 (function () { 
 	var obj =  function (cfg, env) {
 		let me = this;
-		me.io = require(env.root_path + '/packeg/socket.io-client/node_modules/socket.io-client');
+		me.io = require(env.root_path + '/package/socket.io-client/node_modules/socket.io-client');
 
 		me.connect = function () {
 			let me = this;
