@@ -30,7 +30,7 @@
 			});
 			setTimeout(function() {   
 				me.socket.close();
-			},1000);			
+			},(cfg.timeout) ? cfg.timeout : 1000);			
 			me.socket.on('serverData', function(data) {
 				if ((data._room) && data._requestID === me.requestID) {
 					me.socket.close();
@@ -53,7 +53,7 @@
 			});
 			setTimeout(function() {   
 				me.socket.close();
-			},1000);			
+			},(cfg.timeout) ? cfg.timeout : 1000);			
 			me.socket.on('serverData', function(data) {
 				if ((data._socket) && data._requestID === me.requestID) {
 					me.socket.close();
