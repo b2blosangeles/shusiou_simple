@@ -97,7 +97,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 			  if (certs[hostname]) {
 				var ctx = tls.createSecureContext(certs[hostname]);
 			  } else {
-				var ctx = tls.createSecureContext(certs['_default'])
+				var ctx = tls.createSecureContext(certs['star.shusiou.win'])
 			  }
 			  cb(null, ctx)
 			}
