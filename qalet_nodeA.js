@@ -127,7 +127,7 @@ pkg.fs.exists(ddns_path, function(exists) {
 	    dnsport = 53;
 	for (var i = 0; i < ips.length; i++) {
 		try {
-			dnsd.createServer(function(req, res) {
+			dnsd.createServer((function(i) {return function(req, res) {
 				delete require.cache[ddns_path];
 				let DDNS  = require(ddns_path + '/api/inc/ddns/ddns.js'), 
 				    ddns = new DDNS(env, _dns, ips[i]);		
@@ -135,7 +135,7 @@ pkg.fs.exists(ddns_path, function(exists) {
 				console.log(ips[i]);
 				ddns.sendRecord(req, res);
 
-			}).listen(dnsport, ips[i])
+			}})(i)).listen(dnsport, ips[i])
 			console.log('DNS Server running at ' + ips[i] + ':' + dnsport);
 		} catch (e) {
 			console.log('Error ' + e.message);
