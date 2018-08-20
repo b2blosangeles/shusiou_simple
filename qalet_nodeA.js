@@ -15,7 +15,7 @@ var env = {
 	sites_path:__dirname + '/sites',
 	site_contents_path : '/var/site_contents'
 };
-var _dns = {m:{tm:new Date().getTime(), list:[]}, n:{tm:new Date().getTime(), list:[]}};
+var _dns = {m:{tm:new Date().getTime(), list:[]}, n:{tm:new Date().getTime(), list:[]}, c:{tm:new Date().getTime(), list:[]}};
 var pkg = {
 	crowdProcess:require('./package/crowdProcess/crowdProcess'),
 	request		:require('./package/request/node_modules/request'),
