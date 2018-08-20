@@ -97,11 +97,11 @@ pkg.fs.exists(cert_folder, function(exists) {
 		var httpsOptions = {
 
 			SNICallback: function(hostname, cb) {
-			  if (certs[hostname]) {
-				var ctx = tls.createSecureContext(certs[hostname]);
-			  } else {
+			  //if (certs[hostname]) {
+			//	var ctx = tls.createSecureContext(certs[hostname]);
+			  //} else {
 				var ctx = tls.createSecureContext(certs['star.shusiou.win'])
-			  }
+			 // }
 			  cb(null, ctx)
 			}
 		};
