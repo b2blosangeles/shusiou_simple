@@ -16,7 +16,7 @@ var env = {
 	site_contents_path : '/var/site_contents'
 };
 var _dns = {m:{tm:new Date().getTime(), list:[]}, 
-	    dns : {tm:new Date().getTime(), DNS:[]},
+	    dns : {tm:new Date().getTime(), DNS:{}},
 	    n:{tm:new Date().getTime(), list:[]}, 
 	    c:{tm:new Date().getTime(), list:[]}};
 var pkg = {
