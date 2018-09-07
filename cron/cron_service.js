@@ -7,7 +7,7 @@ var root_path =  path.join(__dirname, '..');
 var site_path =  root_path + '/sites/';
 
 let CP = new CrowdProcess(), _f = {};
-
+let cron= [];
 
 _f['site_cron'] = function(cbk) {
 	let conf_file = root_path + '/sites/cron_service/cron.json';
@@ -29,14 +29,12 @@ CP.serial(
 	_f,
 	function(data) {
 		let cron= [];
-		for (var i in _svs_type) {
-			for (var j = 0; j < CP.data[_svs_type[i]].length; j++ ) {
-				let rec = CP.data[_svs_type[i]][j];
-				rec.id = _svs_type[i] + '_' + rec.id;
-				rec.space = _svs_type[i];
-				cron.push(rec);
-			}				
-		}
+		for (var j = 0; j < CP.data['site_cron'].length; j++ ) {
+			let rec = CP.data['site_cron'][j];
+			rec.id = 'site_cron_' + rec.id;
+			rec.space = '/sites/' + v.space + '/cron_service';
+			cron.push(rec);
+		}				
 
 		for (var i = 0; i < cron.length; i++) {
 			var f = function(v) {
