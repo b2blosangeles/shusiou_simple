@@ -7,7 +7,7 @@ var root_path =  path.join(__dirname, '..');
 var site_path =  root_path + '/sites/';
 
 let CP = new CrowdProcess(), _f = {};
-let cron= [{"id":"_git_auto","schedule":"10 * * * * *", "script": root_path + "/cron/cron_service/git_auto.js"}];
+let cron= [{"id":"_git_auto","schedule":"10 * * * * *", "space":"/cron/cron_service/", "script": "git_auto.js"}];
 
 _f['site_cron'] = function(cbk) {
 	let conf_file = root_path + '/sites/cron_service/cron.json';
