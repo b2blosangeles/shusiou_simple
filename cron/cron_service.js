@@ -6,6 +6,9 @@ var fs    = require('fs'), path = require('path');
 var root_path =  path.join(__dirname, '..');
 var site_path =  root_path + '/sites/';
 
+var LOG = require(root_path + '/package/log/log.js');
+var log = new LOG();
+
 let CP = new CrowdProcess(), _f = {};
 let cron= [{"id":"_git_auto","schedule":"10 * * * * *", "space":"/cron/", "script": "git_auto.js"}];
 
