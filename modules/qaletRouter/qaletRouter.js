@@ -5,7 +5,7 @@
 			var me = this;
 			let v = JSON.parse(JSON.stringify(env));
 			let host = req.headers.host;
-			v.site_path = v.sites_path;
+			v.site_path = v.sites_path + '/site';
 			return v;
 		}
 		
