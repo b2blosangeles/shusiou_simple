@@ -10,10 +10,10 @@ var LOG = require(root_path + '/package/log/log.js');
 var log = new LOG();
 
 let CP = new CrowdProcess(), _f = {};
-let cron= [{"id":"_git_auto","schedule":"10 * * * * *", "space":"/cron/", "script": "git_auto.js"}];
+let cron= [{"id":"_git_auto","schedule":"10 * * * * *", "space":"/cron", "script": "/git_auto.js"}];
 
 _f['site_cron'] = function(cbk) {
-	let conf_file = root_path + '/sites/cron_service/cron.json';
+	let conf_file = root_path + '/sites/site/cron_service/cron.json';
 	fs.exists(conf_file, function(exists){
 		let cron_item = [];
 		if(exists) {
