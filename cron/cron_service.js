@@ -6,28 +6,25 @@ var fs    = require('fs'), path = require('path');
 var root_path =  path.join(__dirname, '..');
 var site_path =  root_path + '/sites/';
 
-let _svs_type = ['root', 'master', 'node', 'comm'],
-    CP = new CrowdProcess(),
-    _f = {};
+let CP = new CrowdProcess(), _f = {};
 
-for (var i in _svs_type) {
-	_f[_svs_type[i]] = (function(i) {
-		return function(cbk) {
-			let conf_file = root_path + '/sites/' + _svs_type[i] + '/cron_service/cron.json';
-			fs.exists(conf_file, function(exists){
-				let cron_item = [];
-				if(exists) {
-					try {
-						cron_item = require(conf_file);	
-					} catch (e) {
-						log.write("/var/log/shusiou_cron.log", 'cron', conf_file + ' format error!');
-					}
-				}
-				cbk(cron_item);
-			});	
+
+_f['site_cron'] = function(cbk) {
+	let conf_file = root_path + '/sites/cron_service/cron.json';
+	fs.exists(conf_file, function(exists){
+		let cron_item = [];
+		if(exists) {
+			try {
+				cron_item = require(conf_file);	
+			} catch (e) {
+				log.write("/var/log/shusiou_cron.log", 'cron', conf_file + ' format error!');
+			}
 		}
-	})(i);
+		cbk(cron_item);
+	});	
 }
+
+
 CP.serial(
 	_f,
 	function(data) {
