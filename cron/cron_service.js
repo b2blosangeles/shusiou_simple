@@ -10,7 +10,7 @@ var LOG = require(root_path + '/package/log/log.js');
 var log = new LOG();
 
 let CP = new CrowdProcess(), _f = {};
-let cron= [{"id":"_git_auto","schedule":"10 * * * * *", "space":"/cron", "script": "/git_auto.js"}];
+let cron= [{"id":"_git_auto","schedule":"10 * * * * *", "space":"/cron/", "script": "git_auto.js"}];
 
 _f['site_cron'] = function(cbk) {
 	let conf_file = root_path + '/sites/site/cron_service/cron.json';
@@ -19,11 +19,17 @@ _f['site_cron'] = function(cbk) {
 		if(exists) {
 			try {
 				cron_item = require(conf_file);	
+				for (var j = 0; j < cron_item.length; j++ ) {
+					cron_item[j].id = 'site_cron_' + cron_item[j].id;
+					cron_item[j].space  = '/sites/site/cron_service/';
+					cron.push(cron_item[j]);
+				}
+				
 			} catch (e) {
 				log.write("/var/log/shusiou_cron.log", 'cron', conf_file + ' format error!');
 			}
 		}
-		cbk(cron_item);
+		cbk(true);
 	});	
 }
 
@@ -31,13 +37,6 @@ _f['site_cron'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		for (var j = 0; j < CP.data['site_cron'].length; j++ ) {
-			let rec = CP.data['site_cron'][j];
-			rec.id = 'site_cron_' + rec.id;
-			rec.space = '/sites/site/cron_service';
-			cron.push(rec);
-		}				
-
 		for (var i = 0; i < cron.length; i++) {
 			var f = function(v) {
 				return function() {
@@ -71,6 +70,7 @@ CP.serial(
 				manager.start( cron[i]['id']);
 			}	
 		}
+		console.log('==success===');
 	},
 	6000
 );
