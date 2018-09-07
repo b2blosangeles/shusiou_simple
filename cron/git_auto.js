@@ -1,3 +1,4 @@
+var fs    = require('fs'), path = require('path');
 var exec = require('child_process').exec;
 var root_path =  path.join(__dirname, '..');
 var site_path =  root_path + '/sites/site';
