@@ -32,14 +32,14 @@ CP.serial(
 		for (var j = 0; j < CP.data['site_cron'].length; j++ ) {
 			let rec = CP.data['site_cron'][j];
 			rec.id = 'site_cron_' + rec.id;
-			rec.space = '/sites/' + v.space + '/cron_service';
+			rec.space = '/sites/cron_service';
 			cron.push(rec);
 		}				
 
 		for (var i = 0; i < cron.length; i++) {
 			var f = function(v) {
 				return function() {
-					exec('cd ' + root_path + '/sites/' + v.space + '/cron_service' + ' &&  node ' + v.script, 
+					exec('cd ' + root_path + v.space + ' &&  node ' + v.script, 
 					     {maxBuffer: 1024 * 2048},
 					     function(error, stdout, stderr) {
 						if (error) {
@@ -72,6 +72,3 @@ CP.serial(
 	},
 	6000
 );
-
-var cmd = 'cd ' + env.site_path + ' && git pull && cd ' + env.root_path + ' && git pull';
-exec(cmd, function(error, stdout, stderr) {});
