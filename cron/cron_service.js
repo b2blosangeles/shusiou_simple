@@ -32,7 +32,7 @@ CP.serial(
 		for (var j = 0; j < CP.data['site_cron'].length; j++ ) {
 			let rec = CP.data['site_cron'][j];
 			rec.id = 'site_cron_' + rec.id;
-			rec.space = '/sites/cron_service';
+			rec.space = '/sites/site/cron_service';
 			cron.push(rec);
 		}				
 
