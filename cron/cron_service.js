@@ -43,6 +43,7 @@ CP.serial(
 					exec('cd ' + root_path + v.space + ' &&  node ' + v.script, 
 					     {maxBuffer: 1024 * 2048},
 					     function(error, stdout, stderr) {
+						console.log('==success==3=');
 						if (error) {
 							log.write("/var/log/shusiou_cron.log", 'cron::'+v.script,  JSON.stringify(error));
 						} else {
