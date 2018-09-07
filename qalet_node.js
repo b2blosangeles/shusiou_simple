@@ -19,6 +19,7 @@ var _dns = {m:{tm:new Date().getTime(), list:[]}, n:{tm:new Date().getTime(), li
 var pkg = {
 	crowdProcess:require('./package/crowdProcess/crowdProcess'),
 	request		:require('./package/request/node_modules/request'),
+	mysql		:require('./package/mysql/node_modules/mysql'),
 	syntaxError	:require('./package/syntax-error/node_modules/syntax-error'),
 	fs		:require('fs'),
 	exec		:require('child_process').exec,
