@@ -28,7 +28,6 @@ _f['site_cron'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		let cron= [];
 		for (var j = 0; j < CP.data['site_cron'].length; j++ ) {
 			let rec = CP.data['site_cron'][j];
 			rec.id = 'site_cron_' + rec.id;
