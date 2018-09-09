@@ -3,6 +3,6 @@ pkg.fs.exists(fn, function(exists) {
   if (exists) {
     res.sendFile(fn); 									
   } else {
-    me.send404(v);					
+    me.send404(fn);					
   } 
 });
