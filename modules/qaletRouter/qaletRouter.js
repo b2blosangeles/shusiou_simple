@@ -49,7 +49,9 @@
 		};
 		this.runAdmin = function(v) {
 			var me = this;
-			var p = me.envSite(env).root_path + '/admin/index.js';
+			res.send(env);
+			return true;
+			var p = env.root_path + '/admin/index.js';
 			pkg.fs.exists(p, function(exists) {
 				if (exists) {
 					pkg.fs.stat(p, function(err, stats) {
