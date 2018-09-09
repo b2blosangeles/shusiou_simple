@@ -1,1 +1,1 @@
-res.send(path);
+res.send(__path);
