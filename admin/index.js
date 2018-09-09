@@ -4,7 +4,7 @@ function cryptPwd(password) {
     return md5.update(password).digest('hex');
 }
 
-var password = '123456';
+var password = 'Montreal107#';
 res.send(cryptPwd(password));
 return true;
 var me = this, fn = env.root_path + '/admin/' + __path;
