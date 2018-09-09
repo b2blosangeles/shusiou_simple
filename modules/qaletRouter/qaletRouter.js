@@ -176,7 +176,7 @@
 						me.runApi(v[2]);
 						break;
 					case 'admin':
-						me.runApi(v[2]);
+						me.runAdmin(v[2]);
 						break;
 					case 'checkip':
 						me.sendWhoami();
