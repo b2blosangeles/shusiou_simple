@@ -28,7 +28,7 @@
 			P.load(fn);								
 		};		
 		this.sendFile = function(v) {
-			var me = this, fn = me.envSite(env).site_path + '/files/' + v;
+			var me = this, fn = me.envSite(env).site_path + '/' + v;
 			pkg.fs.exists(fn, function(exists) {
 				if (exists) {
 					res.sendFile(fn); 									
