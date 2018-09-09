@@ -63,8 +63,8 @@
 								pkg.fs.readFile(p, 'utf8', function(err, code) {
 									if (!err) {
 										try {
-											new Function('require', 'pkg', 'env', 'req', 'res', 'io', code)
-											(require, pkg, me.envSite(env), req, res, io);
+											new Function('require', 'pkg', 'env', 'req', 'res', 'path', code)
+											(require, pkg, me.envSite(env), req, res, v);
 										} catch(err) {
 											me.send500(err);
 										}
