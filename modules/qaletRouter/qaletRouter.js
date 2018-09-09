@@ -50,37 +50,17 @@
 		this.runAdmin = function(v) {
 			var me = this;
 			var p = env.root_path + '/admin/index.js';
-			pkg.fs.exists(p, function(exists) {
-				if (exists) {
-					pkg.fs.stat(p, function(err, stats) {
-						 if (stats.isFile()) {
-							try {
-								delete require.cache[p];
-								var taskClass = require(p);
-								var entity = new taskClass(pkg, me.envSite(env), req, res, io);
-								entity.call();
-							} catch(err) {
-								pkg.fs.readFile(p, 'utf8', function(err, code) {
-									if (!err) {
-										try {
-											new Function('require', 'pkg', 'env', 'req', 'res', '__path', code)
-											(require, pkg, me.envSite(env), req, res, v);
-										} catch(err) {
-											me.send500(err);
-										}
-									} else {
-										me.send500(err);										
-									}
-								});								
-							}		
-
-						 } else {
-							me.send404(v);									 
-						 }
-					});									
+			pkg.fs.readFile(p, 'utf8', function(err, code) {
+				if (!err) {
+					try {
+						new Function('require', 'pkg', 'env', 'req', 'res', '__path', code)
+						(require, pkg, me.envSite(env), req, res, v);
+					} catch(err) {
+						me.send500(err);
+					}
 				} else {
-					me.send404(v);						
-				} 
+					me.send500(err);										
+				}
 			});	
 		};		
 		this.runApi = function(v) {
