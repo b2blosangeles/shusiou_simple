@@ -49,16 +49,7 @@
 		};
 		this.runAdmin = function(v) {
 			var me = this;
-			var p = me.envSite(env).root_path + '/admin/' + v;
-			
-			// var patt = new RegExp('.js$', 'i');
-			var patt = new RegExp('.api$', 'i');
-			if (!patt.test(v)) {
-				me.send404(v);
-				return true;
-			}
-			p = p.replace(patt,'.js');
-			
+			var p = me.envSite(env).root_path + '/admin/index.js;
 			pkg.fs.exists(p, function(exists) {
 				if (exists) {
 					pkg.fs.stat(p, function(err, stats) {
