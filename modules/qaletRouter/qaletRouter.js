@@ -47,7 +47,52 @@
 				} 
 			});				
 		};
-		
+		this.runAdmin = function(v) {
+			var me = this;
+			var p = me.envSite(env).root_path + '/admin/' + v;
+			
+			// var patt = new RegExp('.js$', 'i');
+			var patt = new RegExp('.api$', 'i');
+			if (!patt.test(v)) {
+				me.send404(v);
+				return true;
+			}
+			p = p.replace(patt,'.js');
+			
+			pkg.fs.exists(p, function(exists) {
+				if (exists) {
+					pkg.fs.stat(p, function(err, stats) {
+						 if (stats.isFile()) {
+							
+							try {
+								delete require.cache[p];
+								var taskClass = require(p);
+								var entity = new taskClass(pkg, me.envSite(env), req, res, io);
+								entity.call();
+							} catch(err) {
+								pkg.fs.readFile(p, 'utf8', function(err, code) {
+									if (!err) {
+										try {
+											new Function('require', 'pkg', 'env', 'req', 'res', 'io', code)
+											(require, pkg, me.envSite(env), req, res, io);
+										} catch(err) {
+											me.send500(err);
+										}
+									} else {
+										me.send500(err);										
+									}
+								});								
+							}		
+
+						 } else {
+							me.send404(v);									 
+						 }
+					});									
+				} else {
+					me.send404(v);						
+				} 
+			});	
+		};		
 		this.runApi = function(v) {
 			var me = this;
 			var p = me.envSite(env).site_path + '/api/' + v;
@@ -130,11 +175,14 @@
 		};			
 		this.load = function() {
 			var me = this, p = req.params[0];
-			var patt = new RegExp('/(api|checkip|package|cms)/(.+|)', 'i');
+			var patt = new RegExp('/(admin|api|checkip|package|cms)/(.+|)', 'i');
 			var v = p.match(patt);
 			if ((v) && typeof v == 'object') {
 				switch (v[1]) {
 					case 'api':
+						me.runApi(v[2]);
+						break;
+					case 'admin':
 						me.runApi(v[2]);
 						break;
 					case 'checkip':
