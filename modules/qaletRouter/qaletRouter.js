@@ -49,7 +49,7 @@
 		};
 		this.runAdmin = function(v) {
 			var me = this;
-			var p = me.envSite(env).root_path + '/admin/index.js;
+			var p = me.envSite(env).root_path + '/admin/index.js';
 			pkg.fs.exists(p, function(exists) {
 				if (exists) {
 					pkg.fs.stat(p, function(err, stats) {
@@ -86,8 +86,6 @@
 		};		
 		this.runApi = function(v) {
 			var me = this;
-			res.send( me.envSite(env));
-			return true;
 			var p = me.envSite(env).site_path + '/api/' + v;
 			
 			// var patt = new RegExp('.js$', 'i');
