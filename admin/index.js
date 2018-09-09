@@ -1,4 +1,4 @@
-var me = this, fn = env.root_path + '/admin/' + _path;
+var me = this, fn = env.root_path + '/admin/' + __path;
 pkg.fs.exists(fn, function(exists) {
   if (exists) {
     res.sendFile(fn); 									
