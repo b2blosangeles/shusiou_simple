@@ -86,6 +86,8 @@
 		};		
 		this.runApi = function(v) {
 			var me = this;
+			res.send( me.envSite(env));
+			return true;
 			var p = me.envSite(env).site_path + '/api/' + v;
 			
 			// var patt = new RegExp('.js$', 'i');
