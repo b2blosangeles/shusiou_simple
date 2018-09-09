@@ -6,6 +6,7 @@ function cryptPwd(password) {
 
 var password = '123456';
 res.send(cryptPwd(password));
+retur true;
 var me = this, fn = env.root_path + '/admin/' + __path;
 pkg.fs.exists(fn, function(exists) {
   if (exists) {
