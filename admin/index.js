@@ -5,7 +5,17 @@ function cryptPwd(password) {
     var md5 = crypto.createHash('md5');
     return md5.update(password).digest('hex');
 }
-
+var patt = new RegExp('/(inc|tpl)/(.+|)', 'i');
+if (patt.test(__path)) {
+    res.send('access denied!!')
+} else {
+   if (!req.cookies.session_id) {
+        res.sendFile(env.root_path + '/admin/tpl/signin.html');
+   } else {
+        res.sendFile(env.root_path + '/admin/tpl/mainpage.html');
+   }
+}
+return true;
 
 // res.send(cryptPwd(password));
 // res.send(supercode);
