@@ -41,7 +41,7 @@ if (patt.test(__path)) {
                 res.redirect('/admin/');
             } else {
                 loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
-                    if (req.body.cmd === 'login') res.send(code.replace(/\{\$err\}/ig, 'err!!' + req.body.password));
+                    if (req.body.cmd === 'login') res.send(code.replace(/\{\$err\}/ig, 'err!!' + cryptPwd(req.body.password)));
                     else res.send(code.replace(/\{\$err\}/ig, ''));
                 });
             }
