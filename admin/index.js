@@ -39,8 +39,9 @@ if (patt.test(__path)) {
        if (!req.cookies.session_id) {
             var md5 = cryptPwd(req.body.password);
             if (req.body.cmd === 'login' && config.adminpass.indexOf(md5) !== -1) {
-                res.cookie('session_id',md5, {maxAge:300000, httpOnly:true });  
-                res.redirect('/admin/');
+                res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
+                res.send('bbb!!')
+              //  res.redirect('/admin/');
             } else {
                 loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
                     res.send('code');
