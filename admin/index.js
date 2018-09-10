@@ -18,11 +18,11 @@ function loadTPL(fn, cbk) {
     return true;
     pkg.fs.exists(fn, function(exists) {
       if (exists) {
-            kg.fs.readFile(fn, 'utf8', function(err, code) {
+            pkg.fs.readFile(fn, 'utf8', function(err, code) {
                 if (!err) {
                     cbk(code)
                 } else {
-                    res.send(fn + ' not exist');										
+                    cbk(fn + ' not exist');										
                 }
             });			        									
       } else {
