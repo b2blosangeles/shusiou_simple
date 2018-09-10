@@ -33,7 +33,7 @@ res.send(config.adminpass);
 return true;
 
 
-/*
+
 var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
@@ -53,7 +53,7 @@ if (patt.test(__path)) {
        }
 }
 return true;
-
+/*
 // res.send(cryptPwd(password));
 // res.send(supercode);
 // maxAge:60000, 
