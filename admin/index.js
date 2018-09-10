@@ -33,8 +33,9 @@ var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
-  //  res.send(req.cookies);
-  //  return true;
+     res.clearCookie('session_id');
+  res.send(req.cookies);
+  return true;
                 var md5 = cryptPwd((req.body.password)?req.body.password:'');
                 switch (req.body.cmd) {
                     case 'login':
