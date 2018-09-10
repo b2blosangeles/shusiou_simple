@@ -35,7 +35,6 @@ if (patt.test(__path)) {
 } else {
   //  res.send(req.cookies);
   //  return true;
-       if (!req.cookies.session_id) {
                 var md5 = cryptPwd((req.body.password)?req.body.password:'');
                 switch (req.body.cmd) {
                     case 'login':
@@ -55,13 +54,14 @@ if (patt.test(__path)) {
                         break;
                     
                     default :
-                        loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
-                            res.send(code.replace(/\{\$err\}/ig, ''));
-                        });                        
+                        if (!req.cookies.session_id) {
+                            loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
+                                res.send(code.replace(/\{\$err\}/ig, ''));
+                            });
+                        } else {
+                            res.sendFile(env.root_path + '/admin/tpl/mainpage.html');
+                        }
                 }
-       } else {
-            res.sendFile(env.root_path + '/admin/tpl/mainpage.html');
-       }
 }
 return true;
 /*
