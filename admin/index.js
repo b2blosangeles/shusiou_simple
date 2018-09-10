@@ -11,7 +11,11 @@ function cryptPwd(password) {
 // res.send(supercode);
 // maxAge:60000, 
 res.cookie('username','cookie的值',{expires: new Date(Date.now() - 900000), httpOnly:true });   //设置cookie  maxAge表示过期时间 单位毫秒
- res.send(req.cookies);    
+if (!req.cookies.pwd_id) {
+    res.sendFile(env.root_path + '/admin/tpl/signin.html);
+} else {
+    res.sendFile(env.root_path + '/admin/tpl/signout.html);
+}
 // res.send("设置cookie成功");
 
 
