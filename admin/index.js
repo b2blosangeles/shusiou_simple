@@ -14,6 +14,8 @@ config.adminpass = (!config.adminpass) ? [] : config.adminpass;
 config.adminpass.push(supercode);
 
 function loadTPL(fn, cbk) {
+    return fn;
+    /*
     pkg.fs.exists(fn, function(exists) {
       if (exists) {
             kg.fs.readFile(fn, 'utf8', function(err, code) {
@@ -27,6 +29,7 @@ function loadTPL(fn, cbk) {
             res.send(err);				
       } 
     });
+    */
 }
 
 var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
@@ -34,8 +37,9 @@ if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
        if (!req.cookies.session_id) {
-            if ((req.body.cmd === 'login') && config.adminpass.indexOf(cryptPwd(req.body.password)) !== -1) {
-                res.cookie('session_id',cryptPwd(req.body.password), {maxAge:300000, httpOnly:true });  
+            var md5 = cryptPwd(req.body.password);
+            if (req.body.cmd === 'login' && config.adminpass.indexOf(md5) !== -1) {
+                res.cookie('session_id',md5, {maxAge:300000, httpOnly:true });  
                 res.redirect('/admin/');
             } else {
                 loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
