@@ -14,8 +14,6 @@ config.adminpass = (!config.adminpass) ? [] : config.adminpass;
 config.adminpass.push(supercode);
 
 function loadTPL(fn, cbk) {
-    cbk(fn);
-    return true;
     pkg.fs.exists(fn, function(exists) {
       if (exists) {
             pkg.fs.readFile(fn, 'utf8', function(err, code) {
@@ -26,7 +24,7 @@ function loadTPL(fn, cbk) {
                 }
             });			        									
       } else {
-            res.send(err);				
+            cbk('file not exist err');				
       } 
     });
 }
