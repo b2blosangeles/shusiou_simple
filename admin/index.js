@@ -11,7 +11,7 @@ function cryptPwd(password) {
 // res.send(supercode);
 
 res.cookie('username','cookie的值',{maxAge:60000});   //设置cookie  maxAge表示过期时间 单位毫秒
-console.log(req.cookies);    
+ res.send(req.cookies);    
 // res.send("设置cookie成功");
 
 
