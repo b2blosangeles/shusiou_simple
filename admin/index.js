@@ -20,11 +20,11 @@ function loadTPL(fn, cbk) {
                 if (!err) {
                     cbk(code)
                 } else {
-                    me.send500(err);										
+                    res.send(fn + ' not exist');										
                 }
             });			        									
       } else {
-            me.send404(fn);					
+            res.send(err);				
       } 
     });
 }
