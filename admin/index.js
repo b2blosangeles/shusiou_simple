@@ -33,11 +33,11 @@ var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
-     res.clearCookie('redirect');
-  res.send(req.cookies);
-  return true;
+    // res.clearCookie('redirect');
+  //res.send(req.cookies);
+ // return true;
                 var md5 = cryptPwd((req.body.password)?req.body.password:'');
-                switch (req.body.cmd) {
+                switch (req.body.authCmd {
                     case 'login':
                         if (config.adminpass.indexOf(md5) !== -1) {
                             res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
