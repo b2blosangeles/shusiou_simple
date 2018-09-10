@@ -39,7 +39,7 @@ if (patt.test(__path)) {
                     case 'login':
                         if (config.adminpass.indexOf(md5) !== -1) {
                             res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
-                             res.redirect('/admin/');
+                            res.redirect('/admin/');
                         } else {
                              loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
                                 res.send(code.replace(/\{\$err\}/ig, 'err!!' + cryptPwd(req.body.password)));
@@ -49,12 +49,12 @@ if (patt.test(__path)) {
                         
                     case 'sigout':
                         res.cookie('session_id',null, {maxAge:-300000, httpOnly:true }); 
-                        res.send('/admin/');
+                        res.redirect('/admin/');
                         break;
                     
                     default :
                         loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
-                            else res.send(code.replace(/\{\$err\}/ig, ''));
+                            res.send(code.replace(/\{\$err\}/ig, ''));
                         });                        
                 }
        } else {
