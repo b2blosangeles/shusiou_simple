@@ -14,7 +14,7 @@ res.cookie('username','cookie的值',{expires: new Date(Date.now() - 900000), ht
 if (!req.cookies.pwd_id) {
     res.sendFile(env.root_path + '/admin/tpl/signin.html);
 } else {
-    res.sendFile(env.root_path + '/admin/tpl/signout.html);
+    res.sendFile(env.root_path + '/admin/tpl/mainpage.html');
 }
 // res.send("设置cookie成功");
 
