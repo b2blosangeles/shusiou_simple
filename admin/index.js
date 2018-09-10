@@ -39,7 +39,8 @@ if (patt.test(__path)) {
 } else {
        if (!req.cookies.session_id) {
             if ((req.body.submitted) && config.adminpass.indexOf(cryptPwd(req.body.password)) !== -1) {
-                 res.sendFile(env.root_path + '/admin/tpl/mainpage.html');
+                res.cookie('session_id',cryptPwd(req.body.password) ,{maxAge:300000, httpOnly:true });  
+                res.redirect('/admin/');
             } else {
                 loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
                     if (req.body.submitted) res.send(code.replace(/\{\$err}/, 'err!!'));
