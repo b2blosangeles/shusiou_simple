@@ -47,7 +47,7 @@ if (patt.test(__path)) {
                         }
                         break;
                         
-                    case 'sigout':
+                    case 'signout':
                         res.cookie('session_id',null, {maxAge:-300000, httpOnly:true }); 
                         res.redirect('/admin/');
                         break;
