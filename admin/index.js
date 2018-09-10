@@ -34,9 +34,8 @@ if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
        if (!req.cookies.session_id) {
-           
+           var md5 = cryptPwd((req.body.password)?req.body.password:'');
             if (req.body.cmd === 'login' && config.adminpass.indexOf(md5) !== -1) {
-                var md5 = cryptPwd(req.body.password);
                 res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
                 res.redirect('/admin/');
             } else {
