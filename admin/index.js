@@ -7,7 +7,7 @@ function cryptPwd(password) {
 }
 res.send(__path);
 return true;
-var patt = new RegExp('/(inc|tpl)/(.+|)', 'i');
+var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
