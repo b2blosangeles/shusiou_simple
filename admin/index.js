@@ -15,6 +15,7 @@ config.adminpass.push(supercode);
 
 res.send(config.adminpass);
 return true;
+/*
 function loadTPL(fn, cbk) {
     pkg.fs.exists(fn, function(exists) {
       if (exists) {
@@ -72,3 +73,4 @@ pkg.fs.exists(fn, function(exists) {
     me.send404(fn);					
   } 
 });
+*/
