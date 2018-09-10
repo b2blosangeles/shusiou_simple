@@ -52,13 +52,13 @@ if (patt.test(__path)) {
                 break;
 
             default :
-                if (!req.cookies.session_id) {
-                    loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
-                        res.send(code.replace(/\{\$err\}/ig, ''));
-                    });
-                } else {
+                if ((req.cookies.session_id) && config.adminpass.indexOf(req.cookies.session_id) !== -1) {
                     loadTPL(env.root_path + '/admin/tpl/mainpage.html', function(code) {
                         res.send(code);
+                    });
+                } else {
+                    loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
+                        res.send(code.replace(/\{\$err\}/ig, ''));
                     });
                 }
         }
