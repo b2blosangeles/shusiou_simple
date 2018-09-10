@@ -2,7 +2,7 @@ var
 express = require('./package/express/node_modules/express'),   
 bodyParser = require('./package/body-parser/node_modules/body-parser'),
 compression = require('./package/compression/node_modules/compression'),
-cookieParser = require('./package/body-parser/node_modules/cookie-parser'),
+cookieParser = require('./package/cookie-parser/node_modules/cookie-parser'),
 tls = require('tls'),  
 app			= express(),
 expireTime	= 604800000,
