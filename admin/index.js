@@ -2,6 +2,8 @@ let crypto = require('crypto'),
     supercode = 'ae8ea09ebafec9101b5654949366046d', 
     config = {};
 
+let auth = require(env.root_path + '/admin/inc/auth.js');
+
 function cryptPwd(password) {
     var md5 = crypto.createHash('md5');
     return md5.update(password).digest('hex');
