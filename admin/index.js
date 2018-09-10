@@ -38,12 +38,12 @@ if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
        if (!req.cookies.session_id) {
-            if ((req.body.submitted) && config.adminpass.indexOf(cryptPwd(req.body.password)) !== -1) {
+            if ((req.body.cmd === 'login') && config.adminpass.indexOf(cryptPwd(req.body.password)) !== -1) {
                 res.cookie('session_id',cryptPwd(req.body.password) ,{maxAge:300000, httpOnly:true });  
                 res.redirect('/admin/');
             } else {
                 loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
-                    if (req.body.submitted) res.send(code.replace(/\{\$err}/, 'err!!'));
+                    if (req.body.cmd === 'login') res.send(code.replace(/\{\$err}/, 'err!!'));
                     else res.send(code.replace(/\{\$err}/, ''));
                 });
             }
