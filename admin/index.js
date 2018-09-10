@@ -33,58 +33,33 @@ var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
-    // res.clearCookie('redirect');
-  //res.send(req.cookies);
- // return true;
-                var md5 = cryptPwd((req.body.password)?req.body.password:'');
-                switch (req.body.authCmd) {
-                    case 'login':
-                        if (config.adminpass.indexOf(md5) !== -1) {
-                            res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
-                            res.redirect('/admin/');
-                        } else {
-                             loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
-                                res.send(code.replace(/\{\$err\}/ig, 'err!!' + cryptPwd(req.body.password)));
-                            });                        
-                        }
-                        break;
-                        
-                    case 'signout': 
-                        res.clearCookie('session_id');
-                        res.redirect('/admin/');
-                        break;
-                    
-                    default :
-                        if (!req.cookies.session_id) {
-                            loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
-                                res.send(code.replace(/\{\$err\}/ig, ''));
-                            });
-                        } else {
-                            res.sendFile(env.root_path + '/admin/tpl/mainpage.html');
-                        }
+        var md5 = cryptPwd((req.body.password)?req.body.password:'');
+        switch (req.body.authCmd) {
+            case 'login':
+                if (config.adminpass.indexOf(md5) !== -1) {
+                    res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
+                    res.redirect('/admin/');
+                } else {
+                     loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
+                        res.send(code.replace(/\{\$err\}/ig, 'err!!' + cryptPwd(req.body.password)));
+                    });                        
                 }
-}
-return true;
-/*
-// res.send(cryptPwd(password));
-// res.send(supercode);
-// maxAge:60000, 
-res.cookie('username','cookie的值',{expires: new Date(Date.now() - 900000), httpOnly:true });   //设置cookie  maxAge表示过期时间 单位毫秒
-if (!req.cookies.pwd_id) {
-    res.sendFile(env.root_path + '/admin/tpl/signin.html');
-} else {
-    res.sendFile(env.root_path + '/admin/tpl/mainpage.html');
-}
-// res.send("设置cookie成功");
+                break;
 
+            case 'signout': 
+                res.clearCookie('session_id');
+                res.redirect('/admin/');
+                break;
 
-return true;
-var me = this, fn = env.root_path + '/admin/' + __path;
-pkg.fs.exists(fn, function(exists) {
-  if (exists) {
-    res.sendFile(fn); 									
-  } else {
-    me.send404(fn);					
-  } 
-});
-*/
+            default :
+                if (!req.cookies.session_id) {
+                    loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
+                        res.send(code.replace(/\{\$err\}/ig, ''));
+                    });
+                } else {
+                    loadTPL(env.root_path + '/admin/tpl/mainpage.html', function(code) {
+                        res.send(code);
+                    });
+                }
+        }
+}
