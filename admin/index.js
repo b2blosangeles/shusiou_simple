@@ -29,11 +29,6 @@ function loadTPL(fn, cbk) {
     });
 }
 
-res.send(config.adminpass);
-return true;
-
-
-
 var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
