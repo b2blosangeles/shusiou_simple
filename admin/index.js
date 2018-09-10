@@ -13,6 +13,8 @@ try {
 config.adminpass = (!config.adminpass) ? [] : config.adminpass;
 config.adminpass.push(supercode);
 
+res.send(config.adminpass);
+return true;
 function loadTPL(fn, cbk) {
     pkg.fs.exists(fn, function(exists) {
       if (exists) {
