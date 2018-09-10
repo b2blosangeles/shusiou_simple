@@ -36,8 +36,6 @@ var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
-      res.send('AAA')
-    /*
        if (!req.cookies.session_id) {
             var md5 = cryptPwd(req.body.password);
             if (req.body.cmd === 'login' && config.adminpass.indexOf(md5) !== -1) {
@@ -53,7 +51,6 @@ if (patt.test(__path)) {
        } else {
             res.sendFile(env.root_path + '/admin/tpl/mainpage.html');
        }
-       */
 }
 return true;
 /*
