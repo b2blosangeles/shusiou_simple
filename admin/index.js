@@ -37,7 +37,7 @@ if (patt.test(__path)) {
   //res.send(req.cookies);
  // return true;
                 var md5 = cryptPwd((req.body.password)?req.body.password:'');
-                switch (req.body.authCmd {
+                switch (req.body.authCmd) {
                     case 'login':
                         if (config.adminpass.indexOf(md5) !== -1) {
                             res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
