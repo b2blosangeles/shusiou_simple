@@ -33,7 +33,7 @@ var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
-     res.clearCookie();
+     res.clearCookie('redirect');
   res.send(req.cookies);
   return true;
                 var md5 = cryptPwd((req.body.password)?req.body.password:'');
