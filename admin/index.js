@@ -8,7 +8,12 @@ function cryptPwd(password) {
 
 
 // res.send(cryptPwd(password));
-res.send(upercode);
+// res.send(upercode);
+
+res.cookie('username','cookie的值',{maxAge:60000});   //设置cookie  maxAge表示过期时间 单位毫秒
+    res.send("设置cookie成功");
+
+
 return true;
 var me = this, fn = env.root_path + '/admin/' + __path;
 pkg.fs.exists(fn, function(exists) {
