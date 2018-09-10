@@ -13,9 +13,6 @@ try {
 config.adminpass = (!config.adminpass) ? [] : config.adminpass;
 config.adminpass.push(supercode);
 
-res.send(config.adminpass);
-return true;
-/*
 function loadTPL(fn, cbk) {
     pkg.fs.exists(fn, function(exists) {
       if (exists) {
@@ -32,6 +29,11 @@ function loadTPL(fn, cbk) {
     });
 }
 
+res.send(config.adminpass);
+return true;
+
+
+/*
 var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
