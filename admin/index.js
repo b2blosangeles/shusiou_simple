@@ -34,14 +34,16 @@ if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
        if (!req.cookies.session_id) {
-           
-           if (req.body.cmd) {
                 var md5 = cryptPwd((req.body.password)?req.body.password:'');
                 switch (req.body.cmd) {
                     case 'login':
                         if (config.adminpass.indexOf(md5) !== -1) {
                             res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
                              res.redirect('/admin/');
+                        } else {
+                             loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
+                                res.send(code.replace(/\{\$err\}/ig, 'err!!' + cryptPwd(req.body.password)));
+                            });                        
                         }
                         break;
                         
@@ -52,12 +54,9 @@ if (patt.test(__path)) {
                     
                     default :
                         loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
-                            if (req.body.cmd === 'login') res.send(code.replace(/\{\$err\}/ig, 'err!!' + cryptPwd(req.body.password)));
                             else res.send(code.replace(/\{\$err\}/ig, ''));
                         });                        
                 }
-           
-           }
        } else {
             res.sendFile(env.root_path + '/admin/tpl/mainpage.html');
        }
