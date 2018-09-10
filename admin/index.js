@@ -9,8 +9,8 @@ function cryptPwd(password) {
 
 // res.send(cryptPwd(password));
 // res.send(supercode);
-
-res.cookie('username','cookie的值',{maxAge:60000, expires: new Date(Date.now() - 900000), httpOnly:true });   //设置cookie  maxAge表示过期时间 单位毫秒
+// maxAge:60000, 
+res.cookie('username','cookie的值',{expires: new Date(Date.now() - 900000), httpOnly:true });   //设置cookie  maxAge表示过期时间 单位毫秒
  res.send(req.cookies);    
 // res.send("设置cookie成功");
 
