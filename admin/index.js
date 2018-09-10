@@ -33,8 +33,8 @@ var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
-    res.send(req.cookies);
-    return true;
+  //  res.send(req.cookies);
+  //  return true;
        if (!req.cookies.session_id) {
                 var md5 = cryptPwd((req.body.password)?req.body.password:'');
                 switch (req.body.cmd) {
@@ -49,8 +49,8 @@ if (patt.test(__path)) {
                         }
                         break;
                         
-                    case 'signout':
-                        res.cookie('session_id',null, {maxAge:-300000, httpOnly:true }); 
+                    case 'signout': 
+                        res.clearCookie('session_id');
                         res.redirect('/admin/');
                         break;
                     
