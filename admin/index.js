@@ -14,7 +14,7 @@ config.adminpass = (!config.adminpass) ? [] : config.adminpass;
 config.adminpass.push(supercode);
 
 function loadTPL(fn, cbk) {
-    return fn;
+    cbk(fn);
     /*
     pkg.fs.exists(fn, function(exists) {
       if (exists) {
