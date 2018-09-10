@@ -38,7 +38,7 @@ if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
        if (!req.cookies.session_id) {
-            if ((req.body.submitted) && config.adminpass.indexOf(req.body.password) !== -1) {
+            if ((req.body.submitted) && config.adminpass.indexOf(cryptPwd(req.body.password)) !== -1) {
                  res.sendFile(env.root_path + '/admin/tpl/mainpage.html');
             } else {
                 loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
