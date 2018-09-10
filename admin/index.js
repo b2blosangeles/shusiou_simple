@@ -39,13 +39,12 @@ if (patt.test(__path)) {
        if (!req.cookies.session_id) {
            
             if (req.body.cmd === 'login' && config.adminpass.indexOf(md5) !== -1) {
-                 var md5 = cryptPwd(req.body.password);
-              //  res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
-                res.send('bbb!!')
-              //  res.redirect('/admin/');
+                var md5 = cryptPwd(req.body.password);
+                res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
+                res.redirect('/admin/');
             } else {
                 loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
-                    res.send('code');
+                    res.send(code);
                     //if (req.body.cmd === 'login') res.send(code.replace(/\{\$err\}/, 'err!!'));
                    // else res.send(code.replace(/\{\$err\}/, ''));
                 });
