@@ -2,6 +2,7 @@ var
 express = require('./package/express/node_modules/express'),   
 bodyParser = require('./package/body-parser/node_modules/body-parser'),
 compression = require('./package/compression/node_modules/compression'),
+cookieParser = require('./package/body-parser/node_modules/cookie-parser'),
 tls = require('tls'),  
 app			= express(),
 expireTime	= 604800000,
@@ -30,7 +31,7 @@ app.use(bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
-// app.use(cookieParser());
+app.use(cookieParser());
 app.use(compression({level:9}));
 
 app.all('*', function(req, res, next) {
