@@ -10,16 +10,15 @@ var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
-    if (req.body) {
+    if (req.body.password) {
         res.send(req.body);
+    } else {
+           if (!req.cookies.session_id) {
+                res.sendFile(env.root_path + '/admin/tpl/signin.html');
+           } else {
+                res.sendFile(env.root_path + '/admin/tpl/mainpage.html');
+           }
     }
-    
-    
-   if (!req.cookies.session_id) {
-        res.sendFile(env.root_path + '/admin/tpl/signin.html');
-   } else {
-        res.sendFile(env.root_path + '/admin/tpl/mainpage.html');
-   }
 }
 return true;
 
