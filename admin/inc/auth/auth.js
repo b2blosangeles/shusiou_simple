@@ -16,7 +16,7 @@
 				    res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
 				    res.redirect('/admin/');
 				} else {
-				     cbk(function(code) {
+				     cbk(false, function(code) {
 					return code.replace(/\{\$err\}/ig, 'err!!');
 				    });                        
 				}
@@ -29,9 +29,9 @@
 
 			    default :
 				if ((req.cookies.session_id) && config.adminpass.indexOf(req.cookies.session_id) !== -1) {
-					cbk()
+					cbk(true)
 				} else {
-					cbk(function(code) {
+					cbk(false,  function(code) {
 						return code.replace(/\{\$err\}/ig, '');
 				    	});
 					/*
