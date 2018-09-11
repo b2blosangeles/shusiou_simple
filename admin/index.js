@@ -2,6 +2,7 @@ let crypto = require('crypto'),
     supercode = 'ae8ea09ebafec9101b5654949366046d', 
     config = {};
 
+delete require.cache[env.root_path + '/admin/inc/auth/auth.js'];
 var AUTH = require(env.root_path + '/admin/inc/auth/auth.js');
 var auth = new AUTH();
 auth.check();
