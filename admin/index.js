@@ -33,9 +33,9 @@ if (patt.test(__path)) {
     var AUTH = require(env.root_path + '/admin/inc/auth/auth.js');
     var auth = new AUTH(res, req, env, pkg, config, loadTPL, __path);
     
-    auth.check(function() {
+    auth.check(function(cbk) {
         loadTPL(env.root_path + '/admin/tpl/mainpage.html', function(code) {
-            res.send(code);
+            res.send(cbk(code));
         });
     });
 }
