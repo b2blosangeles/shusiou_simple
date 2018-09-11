@@ -31,7 +31,7 @@ if (patt.test(__path)) {
     
     delete require.cache[env.root_path + '/admin/inc/auth/auth.js'];
     var AUTH = require(env.root_path + '/admin/inc/auth/auth.js');
-    var auth = new AUTH(res, req, env, pkg, config, loadTPL, __path);
+    var auth = new AUTH(res, req, env, pkg, config);
     
     auth.check(function(isAuth, cbk) {
         loadTPL(env.root_path + ((!isAuth) ? '/admin/tpl/signin.html' : '/admin/tpl/mainpage.html'), function(code) {
