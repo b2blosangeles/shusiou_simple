@@ -10,8 +10,34 @@
 		this.check = function() {
 			var me = this;
 			var md5 = me.cryptPwd((req.body.password)?req.body.password:'');
-			res.send('AAA_' + md5);
-			// var fs = require('fs');
+			switch (req.body.authCmd) {
+			    case 'login':
+				if (config.adminpass.indexOf(md5) !== -1) {
+				    res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
+				    res.redirect('/admin/');
+				} else {
+				     loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
+					res.send(code.replace(/\{\$err\}/ig, 'err!!'));
+				    });                        
+				}
+				break;
+
+			    case 'signout': 
+				res.clearCookie('session_id');
+				res.redirect('/admin/');
+				break;
+
+			    default :
+				if ((req.cookies.session_id) && config.adminpass.indexOf(req.cookies.session_id) !== -1) {
+				    loadTPL(env.root_path + '/admin/tpl/mainpage.html', function(code) {
+					res.send(code);
+				    });
+				} else {
+				    loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
+					res.send(code.replace(/\{\$err\}/ig, ''));
+				    });
+				}
+			}
 		};	
 	};
 	module.exports = obj;
