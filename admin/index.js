@@ -4,6 +4,8 @@ let crypto = require('crypto'),
 
 let AUTH = require(env.root_path + '/admin/inc/auth/auth.js');
 var auth = new AUTH(req, res);
+auth.check();
+return true;
 
 function cryptPwd(password) {
     var md5 = crypto.createHash('md5');
