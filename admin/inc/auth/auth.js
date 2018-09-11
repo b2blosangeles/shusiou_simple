@@ -1,7 +1,7 @@
 (function (req, res) { 
 	var obj =  function () {
 		this.check = function() {
-			res.send('AAA');
+			res.send('AAA_' + __path);
 			// var fs = require('fs');
 		};	
 	};
