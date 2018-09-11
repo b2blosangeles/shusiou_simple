@@ -4,7 +4,7 @@ let crypto = require('crypto'),
 
 delete require.cache[env.root_path + '/admin/inc/auth/auth.js'];
 var AUTH = require(env.root_path + '/admin/inc/auth/auth.js');
-var auth = new AUTH(res, req, __path);
+var auth = new AUTH(res, req, pkg, __path);
 auth.check();
 return true;
 
