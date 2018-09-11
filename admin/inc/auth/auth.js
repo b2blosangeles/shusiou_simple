@@ -1,5 +1,5 @@
 (function () { 
-	var obj =  function (res, req, env, pkg, config, loadTPL, __path, cbk) {
+	var obj =  function (res, req, env, pkg, config, loadTPL, __path) {
 		let crypto = require('crypto'),
 		    supercode = 'ae8ea09ebafec9101b5654949366046d';
 		
@@ -7,7 +7,7 @@
 		    var md5 = crypto.createHash('md5');
 		    return md5.update(password).digest('hex');
 		}
-		this.check = function() {
+		this.check = function(cbk) {
 			var me = this;
 			var md5 = me.cryptPwd((req.body.password)?req.body.password:'');
 			switch (req.body.authCmd) {
