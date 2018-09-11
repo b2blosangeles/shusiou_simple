@@ -1,5 +1,5 @@
 (function () { 
-	var obj =  function (res, req, env, pkg, config, loadTPL, __path) {
+	var obj =  function (res, req, env, pkg, config, loadTPL, __path, cbk) {
 		let crypto = require('crypto'),
 		    supercode = 'ae8ea09ebafec9101b5654949366046d';
 		
@@ -29,9 +29,7 @@
 
 			    default :
 				if ((req.cookies.session_id) && config.adminpass.indexOf(req.cookies.session_id) !== -1) {
-				    loadTPL(env.root_path + '/admin/tpl/mainpage.html', function(code) {
-					res.send(code);
-				    });
+					cbk()
 				} else {
 				    loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
 					res.send(code.replace(/\{\$err\}/ig, ''));
