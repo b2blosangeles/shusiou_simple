@@ -1,4 +1,4 @@
-(function (req, res) { 
+(function () { 
 	var obj =  function () {
 		this.check = function() {
 			res.send('AAA_' + __path);
@@ -6,5 +6,5 @@
 		};	
 	};
 	module.exports = obj;
-})(req, res);
+})();
 
