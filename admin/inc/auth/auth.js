@@ -1,5 +1,5 @@
 (function () { 
-	var obj =  function (res, req, env, pkg, config, loadTPL, __path) {
+	var obj =  function (res, req, env, pkg, config) {
 		let crypto = require('crypto'),
 		    supercode = 'ae8ea09ebafec9101b5654949366046d';
 		
@@ -34,11 +34,6 @@
 					cbk(false,  function(code) {
 						return code.replace(/\{\$err\}/ig, '');
 				    	});
-					/*
-				    loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
-					res.send(code.replace(/\{\$err\}/ig, ''));
-				    });
-				    */
 				}
 			}
 		};	
