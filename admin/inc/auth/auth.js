@@ -16,8 +16,8 @@
 				    res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
 				    res.redirect('/admin/');
 				} else {
-				     loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
-					res.send(code.replace(/\{\$err\}/ig, 'err!!'));
+				     cbk(function(code) {
+					return code.replace(/\{\$err\}/ig, 'err!!');
 				    });                        
 				}
 				break;
@@ -31,9 +31,14 @@
 				if ((req.cookies.session_id) && config.adminpass.indexOf(req.cookies.session_id) !== -1) {
 					cbk()
 				} else {
+					cbk(function(code) {
+						return code.replace(/\{\$err\}/ig, '');
+				    	});
+					/*
 				    loadTPL(env.root_path + '/admin/tpl/signin.html', function(code) {
 					res.send(code.replace(/\{\$err\}/ig, ''));
 				    });
+				    */
 				}
 			}
 		};	
