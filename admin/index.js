@@ -2,23 +2,6 @@ let crypto = require('crypto'),
     supercode = 'ae8ea09ebafec9101b5654949366046d', 
     config = {};
 
-delete require.cache[env.root_path + '/admin/inc/auth/auth.js'];
-var AUTH = require(env.root_path + '/admin/inc/auth/auth.js');
-var auth = new AUTH(res, req, pkg, __path);
-auth.check();
-return true;
-
-function cryptPwd(password) {
-    var md5 = crypto.createHash('md5');
-    return md5.update(password).digest('hex');
-}
-
-try {
-    config = require('/var/qalet_config.json');
-} catch (err) {}
-config.adminpass = (!config.adminpass) ? [] : config.adminpass;
-config.adminpass.push(supercode);
-
 function loadTPL(fn, cbk) {
     pkg.fs.exists(fn, function(exists) {
       if (exists) {
@@ -34,6 +17,25 @@ function loadTPL(fn, cbk) {
       } 
     });
 }
+
+delete require.cache[env.root_path + '/admin/inc/auth/auth.js'];
+var AUTH = require(env.root_path + '/admin/inc/auth/auth.js');
+var auth = new AUTH(res, req, env, pkg, loadTPL, __path);
+auth.check();
+return true;
+
+function cryptPwd(password) {
+    var md5 = crypto.createHash('md5');
+    return md5.update(password).digest('hex');
+}
+
+try {
+    config = require('/var/qalet_config.json');
+} catch (err) {}
+config.adminpass = (!config.adminpass) ? [] : config.adminpass;
+config.adminpass.push(supercode);
+
+
 
 var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
