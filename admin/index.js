@@ -3,7 +3,7 @@ let crypto = require('crypto'),
     config = {};
 
 let AUTH = require(env.root_path + '/admin/inc/auth/auth.js');
-var auth = new AUTH(req, res);
+var auth = new AUTH(req, res)();
 auth.check();
 return true;
 
