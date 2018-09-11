@@ -8,7 +8,8 @@
 		    return md5.update(password).digest('hex');
 		}
 		this.check = function() {
-			res.send('AAA_' + __path);
+			var md5 = cryptPwd((req.body.password)?req.body.password:'');
+			res.send('AAA_' + md5);
 			// var fs = require('fs');
 		};	
 	};
