@@ -1,5 +1,5 @@
 (function () { 
-	var obj =  function (res, req, pkg, loadTPL, __path) {
+	var obj =  function (res, req, env, pkg, loadTPL, __path) {
 		let crypto = require('crypto'),
 		    supercode = 'ae8ea09ebafec9101b5654949366046d';
 		
