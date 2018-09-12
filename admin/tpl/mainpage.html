@@ -29,7 +29,10 @@
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+           <form action="/admin/" method="post">
+            <input type="hidden" name="authCmd" value="signout" />
+            <input type="submit"  class="btn btn-warning"  value="signout" />
+          </form>  
         </li>
       </ul>
     </div>
