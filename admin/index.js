@@ -35,11 +35,11 @@ if (patt.test(__path) || __path === 'index.js') {
 	    var auth = new AUTH(res, req, env, pkg, config);
 
 	    auth.check(function(isAuth, cbk) {
-		loadTPL(env.root_path + ((!isAuth) ? '/admin/tpl/signin.html' : '/admin/tpl/mainpage.html'), function(code) {
+		loadTPL(env.root_path + ((!isAuth) ? '/admin/tpl/signin.html' : '/admin/tpl/mainpage.html'), function(tpl) {
 		    if (typeof cbk === 'function') {
-			res.send(cbk(code));
+			res.send(cbk(tpl));
 		    } else {
-			res.send(code)
+			res.send(tpl)
 		    }
 		});
 	    });    
