@@ -18,37 +18,36 @@ var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
-    res.send(__path);
-    return true;
+     var fn = env.root_path + '/admin/' + __path;
      pkg.fs.exists(fn, function(exists) {
-      if (exists) {
-           res.sendFile(_path);		        									
-      } else {
-			
-      } 
+	if (exists) {
+		res.sendFile(fn);		        									
+	} else {
+	    let crypto = require('crypto'), 
+		supercode = 'ae8ea09ebafec9101b5654949366046d', 
+		config = {};
+
+	    try {
+		delete require.cache['/var/qalet_config.json'];
+		config = require('/var/qalet_config.json');
+	    } catch (err) {}
+	    config.adminpass = (!config.adminpass) ? [] : config.adminpass;
+	    config.adminpass.push(supercode);
+
+	    delete require.cache[env.root_path + '/admin/inc/auth/auth.js'];
+	    var AUTH = require(env.root_path + '/admin/inc/auth/auth.js');
+	    var auth = new AUTH(res, req, env, pkg, config);
+
+	    auth.check(function(isAuth, cbk) {
+		loadTPL(env.root_path + ((!isAuth) ? '/admin/tpl/signin.html' : '/admin/tpl/mainpage.html'), function(code) {
+		    if (typeof cbk === 'function') {
+			res.send(cbk(code));
+		    } else {
+			res.send(code)
+		    }
+		});
+	    });
+	} 
     });
-    let crypto = require('crypto'), 
-        supercode = 'ae8ea09ebafec9101b5654949366046d', 
-        config = {};
-    
-    try {
-        delete require.cache['/var/qalet_config.json'];
-        config = require('/var/qalet_config.json');
-    } catch (err) {}
-    config.adminpass = (!config.adminpass) ? [] : config.adminpass;
-    config.adminpass.push(supercode);
-    
-    delete require.cache[env.root_path + '/admin/inc/auth/auth.js'];
-    var AUTH = require(env.root_path + '/admin/inc/auth/auth.js');
-    var auth = new AUTH(res, req, env, pkg, config);
-    
-    auth.check(function(isAuth, cbk) {
-        loadTPL(env.root_path + ((!isAuth) ? '/admin/tpl/signin.html' : '/admin/tpl/mainpage.html'), function(code) {
-            if (typeof cbk === 'function') {
-                res.send(cbk(code));
-            } else {
-                res.send(code)
-            }
-        });
-    });
+
 }
