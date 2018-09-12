@@ -15,8 +15,8 @@
 				    res.cookie('session_id',md5, {maxAge:600000, httpOnly:true }); 
 				    res.redirect('/admin/');
 				} else {
-				     cbk(false, function(code) {
-					return code.replace(/\{\$err\}/ig, 'err!!');
+				     cbk(false, function(tpl) {
+					return tpl.fetch({err: 'err!!'});
 				    });                        
 				}
 				break;
@@ -31,7 +31,7 @@
 					cbk(true)
 				} else {
 					cbk(false,  function(code) {
-						return code.replace(/\{\$err\}/ig, '');
+						return tpl.fetch({err: '==='});
 				    	});
 				}
 			}
