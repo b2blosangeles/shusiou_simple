@@ -18,7 +18,7 @@ var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
-    res.send(_path);
+    res.send(__path);
     return true;
      pkg.fs.exists(fn, function(exists) {
       if (exists) {
