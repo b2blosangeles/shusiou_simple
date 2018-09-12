@@ -46,7 +46,9 @@ if (patt.test(__path)) {
 	    });    
      }
 	
-     pkg.fs.stat(fn, function(err) {
+     pkg.fs.stat(fn, function(err, stats) {
+	     res.send(stats);
+	     return true;
 	if (!err) {
 		res.sendFile(fn);		        									
 	} else {
