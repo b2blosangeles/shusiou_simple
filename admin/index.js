@@ -45,7 +45,8 @@ if (patt.test(__path)) {
 		});
 	    });    
      }
-	
+	res.send(fn);
+	return true;
      pkg.fs.stat(fn, function(err, stats) {
 	     res.send(stats);
 	     return true;
