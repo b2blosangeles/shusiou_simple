@@ -39,7 +39,7 @@ if (patt.test(__path) || __path === 'index.js') {
 		    if (typeof cbk === 'function') {
 			res.send(cbk(tpl));
 		    } else {
-			res.send(tpl)
+			res.send(tpl.fetch())
 		    }
 		});
 	    });    
