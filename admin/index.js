@@ -1,6 +1,6 @@
 function loadTPL(fn, cbk) {
-    pkg.fs.exists(fn, function(exists) {
-      if (exists) {
+    pkg.fs.stat(fn, function(err, stats) {
+	if (!err && stats.isFile()) {
             pkg.fs.readFile(fn, 'utf8', function(err, code) {
                 if (!err) {
                     cbk(code)
@@ -15,7 +15,7 @@ function loadTPL(fn, cbk) {
 }
 
 var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
-if (patt.test(__path)) {
+if (patt.test(__path) || __path === 'index.js') {
     res.send('access denied!!')
 } else {
      var fn = env.root_path + '/admin/' + __path;
@@ -45,16 +45,13 @@ if (patt.test(__path)) {
 		});
 	    });    
      }
-     if (__path === 'index.js') {
-     	_f();
-     } else {
-	     pkg.fs.stat(fn, function(err, stats) {
-		if (!err && stats.isFile()) {
-			res.sendFile(fn);		        									
-		} else {
-		    _f();
-		} 
-	    });
-     }
+
+     pkg.fs.stat(fn, function(err, stats) {
+	if (!err && stats.isFile()) {
+		res.sendFile(fn);        									
+	} else {
+	    _f();
+	} 
+    });
 
 }
