@@ -46,8 +46,8 @@ if (patt.test(__path)) {
 	    });    
      }
 	
-     pkg.fs.exists(fn, function(exists) {
-	if (exists) {
+     pkg.fs.stat(fn, function(err) {
+	if (!err) {
 		res.sendFile(fn);		        									
 	} else {
 		res.send(fn);
