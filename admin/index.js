@@ -1,3 +1,8 @@
+var SMARTY = require(env.root_path + '/admin/inc/smart/smart.js');
+var tpl = new SMARTY();
+res.send(tpl.fetch('<span>aaa</span>'));
+return true;
+
 function loadTPL(fn, cbk) {
     pkg.fs.stat(fn, function(err, stats) {
 	if (!err && stats.isFile()) {
