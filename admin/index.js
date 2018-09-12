@@ -45,13 +45,13 @@ if (patt.test(__path)) {
 		});
 	    });    
      }
-     _f();
-     return true;	
+	
      pkg.fs.exists(fn, function(exists) {
 	if (exists) {
 		res.sendFile(fn);		        									
 	} else {
-	    _f();
+		res.send(fn);
+	  //  _f();
 	} 
     });
 
