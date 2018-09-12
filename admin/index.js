@@ -19,11 +19,8 @@ if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
      var fn = env.root_path + '/admin/' + __path;
-     pkg.fs.exists(fn, function(exists) {
-	if (exists) {
-		res.sendFile(fn);		        									
-	} else {
-	    let crypto = require('crypto'), 
+     var _f = function() {
+ 	    let crypto = require('crypto'), 
 		supercode = 'ae8ea09ebafec9101b5654949366046d', 
 		config = {};
 
@@ -46,7 +43,15 @@ if (patt.test(__path)) {
 			res.send(code)
 		    }
 		});
-	    });
+	    });    
+     }
+     _f();
+     return true;	
+     pkg.fs.exists(fn, function(exists) {
+	if (exists) {
+		res.sendFile(fn);		        									
+	} else {
+	    _f();
 	} 
     });
 
