@@ -3,15 +3,12 @@ function loadTPL(fn, cbk) {
     pkg.fs.stat(fn, function(err, stats) {
 	if (!err && stats.isFile()) {
             pkg.fs.readFile(fn, 'utf8', function(err, code) {
-                if (!err) {
-                    var tpl = new SMARTY(code);
-			cbk(tpl.fetch())
-                } else {
-                    cbk(fn + ' not exist');										
-                }
+                var tpl = (!err) ? new SMARTY(code) : new SMARTY(fn + ' not exist');
+		cbk(tpl)
             });			        									
       } else {
-            cbk('file not exist err');				
+	    var tpl = new SMARTY(fn + ' not exist');
+            cbk(tpl)				
       } 
     });
 }
