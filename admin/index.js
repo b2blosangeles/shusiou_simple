@@ -1,6 +1,6 @@
 var SMARTY = require(env.root_path + '/admin/inc/smart/smart.js');
-var tpl = new SMARTY();
-res.send(tpl.fetch('<span>aaa</span>'));
+var tpl = new SMARTY('<span>aaa</span>');
+res.send(tpl.fetch());
 return true;
 
 function loadTPL(fn, cbk) {
