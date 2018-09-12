@@ -18,7 +18,7 @@ if (patt.test(__path) || __path === 'index.js') {
     res.send('access denied!!')
 } else {
      var fn = env.root_path + '/admin/' + __path;
-     var _f = function() {
+     var _auth = function() {
  	    let crypto = require('crypto'), 
 		supercode = 'ae8ea09ebafec9101b5654949366046d', 
 		config = {};
@@ -49,7 +49,7 @@ if (patt.test(__path) || __path === 'index.js') {
 	if (!err && stats.isFile()) {
 		res.sendFile(fn);        									
 	} else {
-	    _f();
+	    _auth();
 	} 
     });
 
