@@ -1,7 +1,6 @@
 (function () { 
 	var obj =  function (res, req, env, pkg, config) {
-		let crypto = require('crypto'),
-		    supercode = 'ae8ea09ebafec9101b5654949366046d';
+		let crypto = require('crypto');
 		
 		this.cryptPwd = function(password) {
 		    var md5 = crypto.createHash('md5');
@@ -13,7 +12,7 @@
 			switch (req.body.authCmd) {
 			    case 'login':
 				if (config.adminpass.indexOf(md5) !== -1) {
-				    res.cookie('session_id',md5, {maxAge:300000, httpOnly:true }); 
+				    res.cookie('session_id',md5, {maxAge:600000, httpOnly:true }); 
 				    res.redirect('/admin/');
 				} else {
 				     cbk(false, function(code) {
