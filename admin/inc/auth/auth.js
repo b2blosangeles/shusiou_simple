@@ -30,7 +30,7 @@
 				if ((req.cookies.session_id) && config.adminpass.indexOf(req.cookies.session_id) !== -1) {
 					cbk(true)
 				} else {
-					cbk(false,  function(code) {
+					cbk(false,  function(tpl) {
 						return tpl.fetch({err: '==='});
 				    	});
 				}
