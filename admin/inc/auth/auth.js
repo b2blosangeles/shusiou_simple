@@ -31,7 +31,7 @@
 					cbk(true)
 				} else {
 					cbk(false,  function(tpl) {
-						return tpl.fetch({err: '==='});
+						return tpl.fetch({});
 				    	});
 				}
 			}
