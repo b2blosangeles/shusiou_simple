@@ -8,14 +8,21 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Server Admin</title>
   </head>
 <body>
-  <form action="/admin/" method="post">
-    <input type="hidden" name="authCmd" value="signout" />
-    <input type="submit" value="signout" /></p>
-  </form>
-  mainpage.html
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h4>Server Admin</h4>
+      <p class="lead">
+           <form action="/admin/" method="post">
+            <input type="hidden" name="authCmd" value="signout" />
+            <input type="submit"  class="btn btn-warning"  value="signout" /></p>
+          </form>     
+      </p>
+    </div>
+    mainpage.html
+  </div>  
 </body>
 </html>
 
