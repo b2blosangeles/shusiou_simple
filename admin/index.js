@@ -18,6 +18,15 @@ var patt = new RegExp('^(inc|tpl)/(.+|)', 'i');
 if (patt.test(__path)) {
     res.send('access denied!!')
 } else {
+    res.send(_path);
+    return true;
+     pkg.fs.exists(fn, function(exists) {
+      if (exists) {
+           res.sendFile(_path);		        									
+      } else {
+			
+      } 
+    });
     let crypto = require('crypto'), 
         supercode = 'ae8ea09ebafec9101b5654949366046d', 
         config = {};
