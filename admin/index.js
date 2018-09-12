@@ -45,13 +45,16 @@ if (patt.test(__path)) {
 		});
 	    });    
      }
-     pkg.fs.stat(fn, function(err, stats) {
-	if (!err && stats.isFile()) {
-		res.sendFile(fn);		        									
-	} else {
-		res.send(fn);
-	  //  _f();
-	} 
-    });
+     if (__path === 'index.js') {
+     	_f();
+     } else {
+	     pkg.fs.stat(fn, function(err, stats) {
+		if (!err && stats.isFile()) {
+			res.sendFile(fn);		        									
+		} else {
+		    _f();
+		} 
+	    });
+     }
 
 }
