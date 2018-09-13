@@ -72,7 +72,7 @@
 			config[key] = data;
 			pkg.fs.writeFile('/var/qalet_config.json', JSON.stringify(config), function(err) {
 				cbk();
-			}
+			});
 		}		
 		
 	};
