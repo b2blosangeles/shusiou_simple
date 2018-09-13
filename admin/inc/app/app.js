@@ -33,14 +33,14 @@
 			if (!req.body.appCmd)  return null;
 
 			switch (req.body.appCmd) {
-				case 'website':
+				case 'saveGit':
 					if (!req.body.github) {
 						return false;
 					} else {
 						return true;
 					}
 					break;
-				case 'database':
+				case 'savedb':
 					if (!req.body.host) {
 						return 'missing host !';
 					} else {
