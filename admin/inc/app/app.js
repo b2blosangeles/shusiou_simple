@@ -22,7 +22,7 @@
 						res.redirect('/admin/');
 					} else {
 						cbk({module: 'database', 
-						     data:{host: req.body.github, user: req.body.user, password: req.body.password, database: req.body.database}, 
+						     data:{host: req.body.host, user: req.body.user, password: req.body.password, database: req.body.database}, 
 						     err : me.validation()});
 					}	
 					break;
