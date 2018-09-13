@@ -5,7 +5,8 @@
 			switch (__path) {
 				case 'website':
 					if (me.validation() === null) {
-						cbk({module: 'website', data:config.website, err : null });
+						cbk({module: 'website', data:(config.website) ? config.website : {}, 
+						     err : null });
 					} else if (me.validation() === true) {
 						res.redirect('/admin/');
 					} else {
