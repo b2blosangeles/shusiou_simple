@@ -5,7 +5,7 @@
 			switch (__path) {
 				case 'website':
 					if (me.validation() === null) {
-						cbk({module: 'website', data:config.website});
+						cbk({module: 'website', data:config.website, err : null });
 					} else if (me.validation() === true) {
 						cbk({module: 'website', data:config.website});
 					} else {
@@ -14,7 +14,7 @@
 					break;
 				case 'database':
 					if (me.validation() === null) {
-						cbk({module:'database', data:config.database});
+						cbk({module:'database', data:config.database, err : null });
 					} else if (me.validation() === true) {
 						cbk({module:'database', data:config.database});
 					} else {
