@@ -31,6 +31,7 @@
 					res.cookie('session_id',req.cookies.session_id, {maxAge:600000, httpOnly:true }); 
 					cbk(true)
 				} else {
+					res.clearCookie('session_id');
 					cbk(false,  function(tpl) {
 						return tpl.fetch({err:''});
 				    	});
