@@ -22,10 +22,10 @@
             <li class="nav-item {if $module === 'website'} active {/if}">
               <a class="nav-link" href="/admin/website">Web Site <span class="sr-only">(current)</span></a>
             </li>            
-            <li class="nav-item">
+            <li class="nav-item pull-right">
                <form action="/admin/" method="post">
                 <input type="hidden" name="authCmd" value="signout" />
-                <input type="submit"  class="btn btn-warning pull-right"  value="signout" />
+                <input type="submit"  class="btn btn-warning"  value="signout" />
               </form>  
             </li>
           </ul>
