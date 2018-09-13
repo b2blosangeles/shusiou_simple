@@ -73,11 +73,11 @@
 			pkg.fs.writeFile('/var/qalet_config.json', JSON.stringify(config), function(err) {
 				if (key === 'website') {
 					var cmd = 'rm -fr ' + env.site_path + ' && cd ' + env.root_path + 
-					    '/admin/sites && git clone ' + data.github + ' test';
-					res.send(cmd);
-					//pkg.exec(cmd, function(error, stdout, stderr) {
-					//  cbk();
-					//});					
+					    '/admin/sites && git clone ' + data.github + ' site';
+					
+					pkg.exec(cmd, function(error, stdout, stderr) {
+					  cbk();
+					});					
 				} else {
 					cbk();
 				}
