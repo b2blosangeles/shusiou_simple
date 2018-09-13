@@ -21,8 +21,8 @@
 					break;
 				case 'database':
 					if (me.validation() === null) {
-						cbk({module:'database', data:(config.website) ? config.website : 
-						     {host:'', user:'', database:''}, 
+						cbk({module:'database', data:(config.database) ? config.database : 
+						     {host:'', user:'', database:'', password:''}, 
 						     err : null });
 					} else if (me.validation() === true) {
 						me.saveConfig(
