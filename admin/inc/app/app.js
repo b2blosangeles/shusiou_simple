@@ -63,7 +63,6 @@
 					if (!req.body.user) return 'missing user !';
 					if (!req.body.database) return 'missing  database!';
 					return true;
-	
 					break;	
 				default: 
 					return true;
