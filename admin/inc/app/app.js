@@ -6,15 +6,19 @@
 				case 'website':
 					if (me.validation() === null) {
 						cbk({module: 'website', data:config.website});
-					} else {
+					} else if (me.validation() === true) {
 						cbk({module: 'website', data:config.website});
+					} else {
+						cbk({module: 'website', data:config.website, err : 'err'});
 					}
 					break;
 				case 'database':
 					if (me.validation() === null) {
 						cbk({module:'database', data:config.database});
+					} else if (me.validation() === true) {
+						cbk({module:'database', data:config.database});
 					} else {
-						cbk({module: 'website', data:config.website});
+						cbk({module: 'website', data:config.website, err : 'err'});
 					}	
 					break;
 				case '':
