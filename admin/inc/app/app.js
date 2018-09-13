@@ -15,11 +15,15 @@
 					break;
 				case 'database':
 					if (me.validation() === null) {
-						cbk({module:'database', data:config.database, err : null });
+						cbk({module:'database', data:(config.website) ? config.website : 
+						     {host:'', user:'', database:''}, 
+						     err : null });
 					} else if (me.validation() === true) {
 						res.redirect('/admin/');
 					} else {
-						cbk({module: 'database', data:config.database, err : me.validation()});
+						cbk({module: 'database', 
+						     data:{host: req.body.github, user: req.body.user, password: req.body.password, database: req.body.database}, 
+						     err : me.validation()});
 					}	
 					break;
 				case '':
