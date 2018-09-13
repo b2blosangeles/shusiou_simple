@@ -2,7 +2,8 @@
 	var obj =  function (res, req, env, pkg, config) {
 		this.loadApp = function(__path, cbk) {
 			var me = this;
-			switch (req.body.appCmd) {
+			// req.body.appCmd
+			switch (__path) {
 				case 'website':
 					cbk({module:__path, data:config.website});
 					break;
@@ -10,7 +11,7 @@
 					cbk({module:__path, data:config.database});
 					break;
 				default:
-					cbk({module:null, data:null});
+					cbk({module:'err', data:null});
 					break;
 			}
 		};	
