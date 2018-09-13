@@ -42,16 +42,15 @@
 					var patt = /^(http|https)\:/g;
 					if (!patt.test(req.body.github)) {
 						return 'Wrong github';
-					} else {
-						return true;
-					}
+					} 
+					return true;
 					break;
 				case 'savedb':
-					if (!req.body.host) {
-						return 'missing host !';
-					} else {
-						return true;
-					}
+					if (!req.body.host) return 'missing host !';
+					if (!req.body.user) return 'missing user !';
+					if (!req.body.database) return 'missing  database!';
+					return true;
+	
 					break;	
 				default: 
 					return true;
