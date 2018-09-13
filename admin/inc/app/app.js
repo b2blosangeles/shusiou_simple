@@ -4,14 +4,14 @@
 			var me = this;
 			switch (__path) {
 				case 'website':
-					if (me.validation() === true) {
+					if (me.validation() === null) {
 						cbk({module: 'website', data:config.website});
 					} else {
 						cbk({module: 'website', data:config.website});
 					}
 					break;
 				case 'database':
-					if (me.validation() === true) {
+					if (me.validation() === null) {
 						cbk({module:'database', data:config.database});
 					} else {
 						cbk({module: 'website', data:config.website});
@@ -26,19 +26,17 @@
 			}
 		};
 		this.validation = function() {
-			if (!req.body.appCmd) {
-				return true;
-			} else {
-				switch (req.body.appCmd) {
-					case 'website':
-						return 'success';
-						break;
-					case 'database':
-						return 'success';
-						break;	
-					default: 
-						return true;
-				}
+			if (!req.body.appCmd)  return null;
+
+			switch (req.body.appCmd) {
+				case 'website':
+					return 'success';
+					break;
+				case 'database':
+					return 'success';
+					break;	
+				default: 
+					return true;
 			}
 		}
 	};
