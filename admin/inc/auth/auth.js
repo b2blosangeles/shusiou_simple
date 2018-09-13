@@ -28,6 +28,7 @@
 
 			    default :
 				if ((req.cookies.session_id) && config.adminpass.indexOf(req.cookies.session_id) !== -1) {
+					res.cookie('session_id',req.cookies.session_id, {maxAge:600000, httpOnly:true }); 
 					cbk(true)
 				} else {
 					cbk(false,  function(tpl) {
