@@ -42,7 +42,7 @@
                   <legend></legend>
                   <div class="form-group">
                       <label for="">GitHub Repository：</label>                                          
-                      <input type="text" class="form-control"  name="github" value="{($data) ? $data.github : ''}"/>
+                      <input type="text" class="form-control"  name="github" value="{(($data) && ($data.github)) ? $data.github : ''}"/>
                   </div>
                   <input type="hidden" name="appCmd" value="saveGit" />
                   <input type="submit" class="btn btn-success" value="Submit Repository"/>
