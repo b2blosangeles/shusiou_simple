@@ -34,10 +34,10 @@
 
 			switch (req.body.appCmd) {
 				case 'website':
-					return 'success';
+					return true;
 					break;
 				case 'database':
-					return 'success';
+					return true;
 					break;	
 				default: 
 					return true;
