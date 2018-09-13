@@ -2,16 +2,19 @@
 	var obj =  function (res, req, env, pkg, config) {
 		this.loadApp = function(__path, cbk) {
 			var me = this;
-			// req.body.appCmd
 			switch (__path) {
 				case 'website':
 					if (me.validation() === true) {
+						cbk({module: 'website', data:config.website});
+					} else {
 						cbk({module: 'website', data:config.website});
 					}
 					break;
 				case 'database':
 					if (me.validation() === true) {
 						me.cbk({module:'database', data:config.database});
+					} else {
+						cbk({module: 'website', data:config.website});
 					}	
 					break;
 				case '':
