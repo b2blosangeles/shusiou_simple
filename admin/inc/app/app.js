@@ -68,8 +68,9 @@
 					return true;
 			}
 		};
-		this.saveConfig = function(cbk) {
-			pkg.ffs.writeFile('/var/qalet_config.json', 'HelloWorld', { 'flag': 'a' }, function(err) {
+		this.saveConfig = function(key, data, cbk) {
+			config[key] = data;
+			pkg.fs.writeFile('/var/qalet_config.json', JSON.stringify(config), function(err) {
 				cbk();
 			}
 		}		
