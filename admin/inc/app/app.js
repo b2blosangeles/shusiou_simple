@@ -12,7 +12,7 @@
 					break;
 				case 'database':
 					if (me.validation() === true) {
-						me.cbk({module:'database', data:config.database});
+						cbk({module:'database', data:config.database});
 					} else {
 						cbk({module: 'website', data:config.website});
 					}	
