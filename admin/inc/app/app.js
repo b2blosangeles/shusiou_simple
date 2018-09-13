@@ -8,7 +8,7 @@
 						cbk({module: 'website', data:(config.website) ? config.website : {github:''}, 
 						     err : null });
 					} else if (me.validation() === true) {
-						res.redirect('/admin/');
+						cbk({module: 'success', message: 'Success saved website'});
 					} else {
 						cbk({module: 'website', data:{github: req.body.github}, err : me.validation()});
 					}
@@ -19,7 +19,7 @@
 						     {host:'', user:'', database:''}, 
 						     err : null });
 					} else if (me.validation() === true) {
-						res.redirect('/admin/');
+						cbk({module: 'success', message: 'Success saved database configuration'});
 					} else {
 						cbk({module: 'database', 
 						     data:{host: req.body.host, user: req.body.user, password: req.body.password, database: req.body.database}, 
