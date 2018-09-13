@@ -9,7 +9,7 @@
 					} else if (me.validation() === true) {
 						res.redirect('/admin/');
 					} else {
-						cbk({module: 'website', data:config.website, err : 'err'});
+						cbk({module: 'website', data:config.website, err : me.validation()});
 					}
 					break;
 				case 'database':
@@ -18,7 +18,7 @@
 					} else if (me.validation() === true) {
 						res.redirect('/admin/');
 					} else {
-						cbk({module: 'website', data:config.website, err : 'err'});
+						cbk({module: 'website', data:config.website, err : me.validation()});
 					}	
 					break;
 				case '':
@@ -34,10 +34,18 @@
 
 			switch (req.body.appCmd) {
 				case 'website':
-					return true;
+					if (!req.body.github) {
+						return false;
+					} else {
+						return true;
+					}
 					break;
 				case 'database':
-					return true;
+					if (!req.body.host) {
+						return 'missing host !';
+					} else {
+						return true;
+					}
 					break;	
 				default: 
 					return true;
