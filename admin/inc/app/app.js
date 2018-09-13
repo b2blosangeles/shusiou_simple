@@ -70,8 +70,6 @@
 		};
 		this.saveConfig = function(key, data, cbk) {
 			config[key] = data;
-			res.send(config);
-			return true;
 			// config.adminpass = [config.adminpass[0]];
 			pkg.fs.writeFile('/var/qalet_config.json', JSON.stringify(config), function(err) {
 				if (key === 'website') {
