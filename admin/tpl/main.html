@@ -42,7 +42,7 @@
                   <legend></legend>
                   <div class="form-group">
                       <label for="">GitHub Repository：</label>                                          
-                      <input type="text" class="form-control"  name="github" value="{(($data) && ($data.github)) ? $data.github : ''}"/>
+                      <input type="text" class="form-control"  name="github" value="{$data.github}"/>
                   </div>
                   <input type="hidden" name="appCmd" value="saveGit" />
                   <input type="submit" class="btn btn-success" value="Submit Repository"/>
@@ -59,13 +59,13 @@
                   <legend>Setup Databse</legend>
                   <div class="form-group">
                       <label for="">Host：</label>                                          
-                      <input type="text" class="form-control"  name="host" value=""/>
+                      <input type="text" class="form-control"  name="host" value="{$data.host}"/>
                       <label for="">User：</label>                                          
-                      <input type="text" class="form-control"  name="user" value=""/>
+                      <input type="text" class="form-control"  name="user" value="{$data.user}"/>
                       <label for="">Password：</label>                                          
                       <input type="text" class="form-control"  name="password" value=""/>
                       <label for="">Database：</label>                                          
-                      <input type="text" class="form-control"  name="database" value=""/>  
+                      <input type="text" class="form-control"  name="database" value="{$data.database}"/>  
                   </div>
                   <input type="hidden" name="appCmd" value="savedb" />
                   <input type="submit" class="btn btn-success" value="Save"/>
