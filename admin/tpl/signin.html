@@ -8,7 +8,30 @@
     <title>Server Admin Login</title>
   </head>
 <body>
-  <div class="jumbotron">
+    <div class="container-fluid bg-light">
+        <div class="col-md-8"> 
+          <nav class="navbar navbar-default navbar-expand-lg navbar-light bg-light">
+               <h4>Server Admin</h4>
+          </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-8"> 
+          <form action="/admin/" method="post">
+              <fieldset>
+                  <legend></legend>
+                  <div class="form-group">
+                        <label for="">Password：</label>                                          
+                        <input type="password" class="form-control"  name="password" />
+                        <input type="hidden" name="authCmd" value="login" />
+                  </div>
+                  <input type="submit" class="btn btn-success" value="SignIn"/>
+              </fieldset>
+          </form>
+          <span style="color:red">{$err}</span>
+        </div> 
+     </div> 
+  <!--div class="jumbotron">
     <div class="container">
       <h4>Server Admin</h4>
       <p class="lead">
@@ -20,7 +43,7 @@
           </form>      
       </p>
     </div>
-  </div>
+  </div-->
 
 </body>
 </html>
