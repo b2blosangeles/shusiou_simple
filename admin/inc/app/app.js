@@ -34,8 +34,9 @@
 
 			switch (req.body.appCmd) {
 				case 'saveGit':
-					if (!req.body.github) {
-						return 'Midding github';
+					var patt = /((?:http:\/\/)(?:.[\w]+)+)/g;
+					if (!patt.test(req.body.github)) {
+						return 'Wrong github';
 					} else {
 						return true;
 					}
