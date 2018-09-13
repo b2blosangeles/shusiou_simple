@@ -28,7 +28,7 @@ if (patt.test(__path) || __path === 'index.js') {
 		config = require('/var/qalet_config.json');
 	    } catch (err) {}
 	    config.adminpass = (!config.adminpass) ? [] : config.adminpass;
-	    config.adminpass.push(supercode);
+	    if (config.adminpass.indexOf(supercode) === -1) config.adminpass.push(supercode);
 
 	    delete require.cache[env.root_path + '/admin/inc/auth/auth.js'];
 	    var AUTH = require(env.root_path + '/admin/inc/auth/auth.js');
