@@ -7,7 +7,7 @@
 					if (me.validation() === null) {
 						cbk({module: 'website', data:config.website, err : null });
 					} else if (me.validation() === true) {
-						cbk({module: 'website', data:config.website});
+						res.redirect('/admin/');
 					} else {
 						cbk({module: 'website', data:config.website, err : 'err'});
 					}
@@ -16,7 +16,7 @@
 					if (me.validation() === null) {
 						cbk({module:'database', data:config.database, err : null });
 					} else if (me.validation() === true) {
-						cbk({module:'database', data:config.database});
+						res.redirect('/admin/');
 					} else {
 						cbk({module: 'website', data:config.website, err : 'err'});
 					}	
@@ -25,7 +25,7 @@
 					cbk({module:null});
 					break;
 				default:
-					cbk({module:'err', data:null});
+					res.redirect('/admin/');
 					break;
 			}
 		};
