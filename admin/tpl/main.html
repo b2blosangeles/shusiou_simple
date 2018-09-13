@@ -54,10 +54,16 @@
         <div class="col-md-8"> 
           <form action="/admin/database" method="post">
               <fieldset>
-                  <legend></legend>
+                  <legend>Setup Databse</legend>
                   <div class="form-group">
                       <label for="">Host：</label>                                          
                       <input type="text" class="form-control"  name="host" value=""/>
+                      <label for="">User：</label>                                          
+                      <input type="text" class="form-control"  name="user" value=""/>
+                      <label for="">Password：</label>                                          
+                      <input type="text" class="form-control"  name="password" value=""/>
+                      <label for="">Database：</label>                                          
+                      <input type="text" class="form-control"  name="database" value=""/>  
                   </div>
                   <input type="submit" class="btn btn-success" value="Save"/>
               </fieldset>
