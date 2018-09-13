@@ -23,8 +23,9 @@
 			}
 		};
 		this.validation = function() {
-			if (!req.body.appCmd) return true;
-			else {
+			if (!req.body.appCmd) {
+				return true;
+			} else {
 				switch (req.body.appCmd) {
 					case 'website':
 						return 'success';
