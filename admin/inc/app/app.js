@@ -75,10 +75,10 @@
 				if (key === 'website') {
 					var cmd = 'rm -fr ' + env.site_path + ' && cd ' + env.root_path + 
 					    '/admin/sites && git clone ' + data.github + ' site';
-					
-					pkg.exec(cmd, function(error, stdout, stderr) {
-					  cbk();
-					});					
+					res.send(cmd);
+					//pkg.exec(cmd, function(error, stdout, stderr) {
+					//  cbk();
+					//});					
 				} else {
 					cbk();
 				}
