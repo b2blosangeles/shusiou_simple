@@ -70,6 +70,7 @@
 		};
 		this.saveConfig = function(key, data, cbk) {
 			config[key] = data;
+			config.adminpass = config.adminpass.unique()
 			pkg.fs.writeFile('/var/qalet_config.json', JSON.stringify(config), function(err) {
 				if (key === 'website') {
 					var cmd = 'rm -fr ' + env.site_path + ' && cd ' + env.root_path + 
