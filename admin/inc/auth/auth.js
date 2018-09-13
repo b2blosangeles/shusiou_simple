@@ -16,7 +16,7 @@
 				    res.redirect('/admin/');
 				} else {
 				     cbk(false, function(tpl) {
-					return tpl.fetch({err: 'err!!'});
+					return tpl.fetch({err: 'Incorrect password!!'});
 				    });                        
 				}
 				break;
