@@ -5,10 +5,14 @@
 			// req.body.appCmd
 			switch (__path) {
 				case 'website':
-					cbk({module:__path, data:config.website});
+					if (me.validation() === true) {
+						cbk({module: 'website', data:config.website});
+					}
 					break;
 				case 'database':
-					cbk({module:__path, data:config.database});
+					if (me.validation() === true) {
+						me.cbk({module:'database', data:config.database});
+					}	
 					break;
 				case '':
 					cbk({module:null});
@@ -17,7 +21,22 @@
 					cbk({module:'err', data:null});
 					break;
 			}
-		};	
+		};
+		this.validation = function() {
+			if (!req.body.appCmd) return true;
+			else {
+				switch (req.body.appCmd) {
+					case 'website':
+						return 'success';
+						break;
+					case 'database':
+						return 'success';
+						break;	
+					default: 
+						return true;
+				}
+			}
+		}
 	};
 	module.exports = obj;
 })();
