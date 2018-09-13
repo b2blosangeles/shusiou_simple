@@ -132,7 +132,7 @@
 		}
 		this.snedIndex = function(p) {
 			var me = this;
-			pkg.fs.exists(me.envSite(env).site_path  + '/files/index.html', (exists) => {
+			pkg.fs.exists(me.envSite(env).site_path  + '/index.html', (exists) => {
 			    if (exists) {
 				    me.sendFile('index.html');
 			    } else {
