@@ -18,7 +18,7 @@
 					} else if (me.validation() === true) {
 						res.redirect('/admin/');
 					} else {
-						cbk({module: 'website', data:config.website, err : me.validation()});
+						cbk({module: 'database', data:config.database, err : me.validation()});
 					}	
 					break;
 				case '':
