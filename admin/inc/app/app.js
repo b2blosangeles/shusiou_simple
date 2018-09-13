@@ -10,6 +10,9 @@
 				case 'database':
 					cbk({module:__path, data:config.database});
 					break;
+				case '':
+					cbk({module:null});
+					break;
 				default:
 					cbk({module:'err', data:null});
 					break;
