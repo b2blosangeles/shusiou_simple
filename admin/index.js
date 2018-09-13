@@ -39,7 +39,12 @@ if (patt.test(__path) || __path === 'index.js') {
 		    if (typeof cbk === 'function') {
 			res.send(cbk(tpl));
 		    } else {
-			res.send(tpl.fetch())
+			delete require.cache[env.root_path + '/admin/inc/app/app.js'];
+	    		var APP = require(env.root_path + '/admin/inc/app/app.js');
+	    		var app = new APP(res, req, env, pkg, config);
+			app.loadApp(function() {
+				tpl.fetch()
+			});
 		    }
 		});
 	    });    
