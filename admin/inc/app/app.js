@@ -35,7 +35,7 @@
 			switch (req.body.appCmd) {
 				case 'saveGit':
 					if (!req.body.github) {
-						return false;
+						return 'Midding github';
 					} else {
 						return true;
 					}
