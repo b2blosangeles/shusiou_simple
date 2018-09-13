@@ -9,6 +9,8 @@
 						     err : null });
 					} else if (me.validation() === true) {
 						me.saveConfig(
+							'website',
+							{github: req.body.github},
 							function() {
 								cbk({module: 'success', message: 'Success saved website configuration'});
 								}
@@ -24,6 +26,8 @@
 						     err : null });
 					} else if (me.validation() === true) {
 						me.saveConfig(
+							'database',
+							{host: req.body.host, user: req.body.user, password: req.body.password, database: req.body.database},
 							function() {
 								cbk({module: 'success', message: 'Success saved database configuration'});
 							}
@@ -66,7 +70,9 @@
 			}
 		};
 		this.saveConfig = function(cbk) {
-			cbk();
+			pkg.ffs.writeFile('/var/qalet_config.json', 'HelloWorld', { 'flag': 'a' }, function(err) {
+				cbk();
+			}
 		}		
 		
 	};
