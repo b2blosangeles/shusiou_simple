@@ -27,7 +27,7 @@
 					}	
 					break;
 				case '':
-					cbk({module:null});
+					cbk({module:''});
 					break;
 				default:
 					res.redirect('/admin/');
