@@ -34,6 +34,18 @@
 
   
    <div class="container">
+     {if $module === 'website'}
+       <form action="/admin/website" method="post">
+          <input type="text" class="form-control"  name="github" value=""/>
+          <input type="submit"  class="btn btn-warning pull-right"  value="submit" />
+        </form> 
+     {/if}
+     {if $module === 'database'}
+       <form action="/admin/website" method="post">
+          <input type="text" class="form-control"  name="database" value=""/>
+          <input type="submit"  class="btn btn-warning pull-right"  value="submit" />
+        </form> 
+     {/if}     
      mainpage.html === {$module}
    </div> 
 </body>
