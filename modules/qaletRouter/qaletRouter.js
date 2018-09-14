@@ -62,8 +62,14 @@
 					me.send500(err);										
 				}
 			});	
-		};		
+		};	
+		
 		this.runApi = function(v) {
+			var me = this;
+			me.runApiAfterConfig(v);
+		};
+		
+		this.runApiAfterConfig = function(v) {
 			var me = this;
 			var p = me.envSite(env).site_path + '/api/' + v;
 			
