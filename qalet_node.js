@@ -12,7 +12,7 @@ var LOG = require(__dirname + '/package/log/log.js');
 var log = new LOG();		
 var env = {
 	root_path:__dirname,
-	config_path:'/var/qalet_config',
+	site_config: {},
 	sites_path:__dirname + '/sites',
 	site_contents_path : '/var/site_contents'
 };
