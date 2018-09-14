@@ -67,6 +67,8 @@
 		this.runApi = function(v) {
 			var me = this;
 			var fn = '/var/qalet_config.json';
+			res.send(fn);
+			return true;
 			pkg.fs.exists(fn, function(exists) {
 				if (exists) {
 					try {
