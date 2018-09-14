@@ -66,7 +66,16 @@
 		
 		this.runApi = function(v) {
 			var me = this;
-			me.runApiAfterConfig(v);
+			var fn = '/var/qalet_config.json';
+			pkg.fs.exists(fn, function(exists) {
+				if (exists) {
+					try {
+						delete require.cache[fn];
+						pkg.env.site_config = require(fn);
+					} catch (e) {}	
+				}
+				me.runApiAfterConfig(v);
+			});
 		};
 		
 		this.runApiAfterConfig = function(v) {
