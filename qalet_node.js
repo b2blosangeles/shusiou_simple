@@ -112,7 +112,7 @@ pkg.fs.exists(cert_folder, function(exists) {
 	});
     }
 });
-/* ---- DNS Server */
+/* ---- DNS Server
 let ddns_path = env.sites_path + '/root';
 pkg.fs.exists(ddns_path, function(exists) {
     if (exists) {
@@ -143,4 +143,4 @@ pkg.fs.exists(ddns_path, function(exists) {
 	}
     }
 });
-/* ---- DNS Server */
+*/
