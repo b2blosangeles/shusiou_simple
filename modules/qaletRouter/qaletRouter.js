@@ -72,11 +72,8 @@
 				if (exists) {
 					try {
 						delete require.cache[fn];
-						pkg.env.site_config = require(fn);
-					} catch (e) {}	
-					
-						res.send('yyy');
-						return true;
+						env.site_config = require(fn);
+					} catch (e) {}
 				}
 				me.runApiAfterConfig(v);
 			});
