@@ -43,7 +43,8 @@ if (patt.test(__path) || __path === 'index.js') {
 	    		var APP = require(env.root_path + '/admin/inc/app/app.js');
 	    		var app = new APP(res, req, env, pkg, config);
 			app.loadApp(__path, function(data) {
-				res.send(tpl.fetch(data).fetch({dbs:['aaa','bbb']}));
+				data.dbs = ['aaa','bbb'];
+				res.send(tpl.fetch(data));
 			});
 		    }
 		});
