@@ -58,9 +58,9 @@
           <button type="button" class="btn btn-warning">
             <i class="icon-plus-sign-alt"></i>&nbsp;Add a new DB link
          </button>
-          {foreach $dbs as $item}
+          {foreach $dbs as $key->$item}
           <button type="button" class="btn btn-primary">
-            <i class="icon-pencil"></i>&nbsp;{$item}
+            <i class="icon-pencil"></i>&nbsp;{$key}
          </button> 
           {/foreach}
  
