@@ -51,11 +51,21 @@
 			var me = this;
 			var patt = new RegExp('api/(.+|).api', 'i');
 			if (patt.test(v)) {
-				res.send(v + '===niu');
+				var p = env.root_path + '/admin/' + v.replace(/\.api$/i, '.js');
+				pkg.fs.readFile(p, 'utf8', function(err, code) {
+					if (!err) {
+						try {
+							new Function('require', 'pkg', 'env', 'req', 'res', '__path', code)
+							(require, pkg, me.envSite(env), req, res, v);
+						} catch(err) {
+							me.send500(err);
+						}
+					} else {
+						me.send500(err);										
+					}
+				});
 				return true;
 			}
-			res.send(v + '===ppp');
-				return true;
 			var p = env.root_path + '/admin/index.js';
 			
 			pkg.fs.readFile(p, 'utf8', function(err, code) {
