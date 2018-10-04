@@ -5,10 +5,9 @@ $(document).ready(function() {
       type: 'post',
       data:  {"cmd":"getDBMenu"},
       success: function( data, textStatus, jQxhr ){
-        alert(1);
+            $('#module_menu').html( JSON.stringify(data) );
       },
       error: function( jqXhr, textStatus, errorThrown ){
-          alert(2);
       }
     }); 
   /*
