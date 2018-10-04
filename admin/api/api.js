@@ -14,8 +14,8 @@ auth.check(function(isAuth, cbk) {
 		return true;
 	}
 	switch (req.body.cmd) {
-		case 'getDBModule':
-			getDBModule(config);
+		case 'getDBMenu':
+			getDBMenu(config);
 			break;
 		default: 
 			res.send('');
@@ -36,6 +36,7 @@ function loadTPL(fn, cbk) {
     });
 }
 function getDBModule(data) {
+	data.appCmd = 'edit';
 	loadTPL(env.root_path + '/admin/tpl/dbModule.html', function(tpl) {
 	    res.send(tpl.fetch(data));
 	});
