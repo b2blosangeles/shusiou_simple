@@ -8,3 +8,34 @@
  </button> 
   {/foreach}
 </div>
+{if $appCmd === 'edit' || $appCmd === 'addDB'}
+<div  class="col-md-12">
+      <form action="/admin/database" method="post">
+          <fieldset>
+              <legend> 
+                {if $appCmd === 'edit'}Edit Databse Configuration{/if}
+                {if $appCmd === 'addDB'}Add Databse Configuration{/if}
+              </legend>
+              <div class="form-group">
+                  <label for="">Config ID：</label>                                          
+                  <input type="text" class="form-control"  name="dbid" value="{$cdb.dbid}"/>                    
+                  <label for="">Host：</label>                                          
+                  <input type="text" class="form-control"  name="host" value="{$cdb.host}"/>
+                  <label for="">User：</label>                                          
+                  <input type="text" class="form-control"  name="user" value="{$cdb.user}"/>
+                  <label for="">Password：</label>                                          
+                  <input type="text" class="form-control"  name="password" value="{$cdb.password}"/>
+                  <label for="">Database：</label>                                          
+                  <input type="text" class="form-control"  name="database" value="{$cdb.database}"/>  
+              </div>
+              <input type="hidden" name="appCmd" value="savedb" />
+              <input type="submit" class="btn btn-success" value="Save"/>
+              {if $appCmd !== 'addDB'}
+                &nbsp;&nbsp;
+                <input type="submit" class="btn btn-danger" value="Delete"/>
+              {/if}
+              &nbsp;&nbsp;&nbsp;<span style="color:red">{$err}</span>
+          </fieldset>
+      </form>
+  </div>
+ {/if}
