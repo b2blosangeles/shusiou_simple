@@ -1,3 +1,8 @@
+let config = {};
+try {
+	delete require.cache['/var/qalet_config.json'];
+	config = require('/var/qalet_config.json');
+} catch (err) {}
 
 	    delete require.cache[env.root_path + '/admin/inc/auth/auth.js'];
 	    var AUTH = require(env.root_path + '/admin/inc/auth/auth.js');
