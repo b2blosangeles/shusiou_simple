@@ -89,15 +89,15 @@
                   </legend>
                   <div class="form-group">
                       <label for="">Config ID：</label>                                          
-                      <input type="text" class="form-control"  name="host" value="{$cfgID}"/>                    
+                      <input type="text" class="form-control"  name="dbid" value="{$cdb.dbid}"/>                    
                       <label for="">Host：</label>                                          
-                      <input type="text" class="form-control"  name="host" value="{$data.host}"/>
+                      <input type="text" class="form-control"  name="host" value="{$cdb.host}"/>
                       <label for="">User：</label>                                          
-                      <input type="text" class="form-control"  name="user" value="{$data.user}"/>
+                      <input type="text" class="form-control"  name="user" value="{$cdb.user}"/>
                       <label for="">Password：</label>                                          
-                      <input type="text" class="form-control"  name="password" value="{$data.password}"/>
+                      <input type="text" class="form-control"  name="password" value="{$cdb.password}"/>
                       <label for="">Database：</label>                                          
-                      <input type="text" class="form-control"  name="database" value="{$data.database}"/>  
+                      <input type="text" class="form-control"  name="database" value="{$cdb.database}"/>  
                   </div>
                   <input type="hidden" name="appCmd" value="savedb" />
                   <input type="submit" class="btn btn-success" value="Save"/>
