@@ -17,9 +17,12 @@
           $('#main_admin_control').submit();
       }
       $(document).ready(function() {
-          $.post( "/admin/api/api.api", {cmd:'getDBMenu'}, function( data ) {
+          $.post( "/admin/api/api.api", {cmd:'getDBMenu'}).done(function( data ) {
+          alert( "Data Loaded: " + data );
+        });
+                 /*, function( data ) {
              $('#module_menu').html( JSON.stringify(data) );
-          });
+          });*/
       });
       
     </script>
