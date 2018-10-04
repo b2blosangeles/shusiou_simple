@@ -49,9 +49,9 @@
 		};
 		this.runAdmin = function(v) {
 			var me = this;
-			var patt = new RegExp('/api/(.+).api', 'i');
+			var patt = /\/api\/(.+)\.api/ig;
 			if (patt.test(v)) {
-				res.send(v);
+				res.send(v + '===niu');
 				return true;
 			}
 			var p = env.root_path + '/admin/index.js';
