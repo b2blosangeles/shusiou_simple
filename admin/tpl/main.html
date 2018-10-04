@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="/admin/css/Bootstrapv4.1.3.css">
     <link rel="stylesheet" href="/admin/css/font-awesome/css/font-awesome.min.css">
     <title>Server Admin</title>
+    <script>
+      function control(cmd) {
+        alert(cmd);
+      }
+    </script>
   </head>
 <body>
     <div class="container-fluid bg-light">
@@ -58,7 +63,7 @@
            <input type="hidden" name="appCmd" value="savedb" />
          </form>  
         <div  class="col-md-12">
-          <button type="button" class="btn btn-warning">
+          <button type="button" class="btn btn-warning" onClick="control('addDB')">
             <i class="icon-plus-sign-alt"></i>&nbsp;Add a new DB link
          </button>
           {foreach from=$dbs key=key item=value}
