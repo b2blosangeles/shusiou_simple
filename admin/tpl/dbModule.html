@@ -32,7 +32,7 @@
                   <label for="">Database：</label>                                          
                   <input type="text" class="form-control"  name="database" value="{$form.database}"/>  
               </div>
-              <button type="submit" class="btn btn-success">
+              <button type="button" class="btn btn-success" onClick="saveDBCFG()">
                   <i class="icon-cloud-upload"></i>&nbsp;&nbsp;Save
               </button>
               {if $module === 'editDB'}
