@@ -49,11 +49,13 @@
 		};
 		this.runAdmin = function(v) {
 			var me = this;
-			var patt = new RegExp('/(api)/(.+|)', 'i');
+			var patt = new RegExp('/api/(.+|)', 'i');
 			if (patt.test(v)) {
 				res.send(v + '===niu');
 				return true;
 			}
+			res.send(v + '===ppp');
+				return true;
 			var p = env.root_path + '/admin/index.js';
 			
 			pkg.fs.readFile(p, 'utf8', function(err, code) {
