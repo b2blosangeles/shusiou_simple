@@ -23,6 +23,7 @@
 					var data = {module: 'database', appCmd:req.body.appCmd};
 					if (!req.body.dbid) {
 						data.cdb = {dbid:'', host:'', user:'', database:'', password:''};
+						data.err = null;
 					}
 					cbk(data);
 					/*
