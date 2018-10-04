@@ -10,5 +10,5 @@ $(document).ready(function() {
 });
 
 function dbEdit() {
-  $('#database_edit').heml('niu ' + new Date());
+  $('#database_edit').html('niu ' + new Date());
 }
