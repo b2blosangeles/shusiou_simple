@@ -19,17 +19,16 @@
               </legend>
               <div class="form-group">
                   <label for="">Config ID：</label>                                          
-                  <input type="text" class="form-control"  name="dbid" value="{$cdb.dbid}"/>                    
+                  <input type="text" class="form-control"  name="dbid" value="{$form.dbid}"/>                    
                   <label for="">Host：</label>                                          
-                  <input type="text" class="form-control"  name="host" value="{$cdb.host}"/>
+                  <input type="text" class="form-control"  name="host" value="{$form.host}"/>
                   <label for="">User：</label>                                          
-                  <input type="text" class="form-control"  name="user" value="{$cdb.user}"/>
+                  <input type="text" class="form-control"  name="user" value="{$form.user}"/>
                   <label for="">Password：</label>                                          
-                  <input type="text" class="form-control"  name="password" value="{$cdb.password}"/>
+                  <input type="text" class="form-control"  name="password" value="{$form.password}"/>
                   <label for="">Database：</label>                                          
-                  <input type="text" class="form-control"  name="database" value="{$cdb.database}"/>  
+                  <input type="text" class="form-control"  name="database" value="{$form.database}"/>  
               </div>
-              <input type="hidden" name="appCmd" value="savedb" />
               <input type="submit" class="btn btn-success" value="Save"/>
               {if $module === 'editDB'}
                 &nbsp;&nbsp;
