@@ -11,6 +11,7 @@ $(document).ready(function() {
 
 function loadDBModule() {
     $.post( "/admin/api/api.api", {cmd:'getDBModule'}).done(function( data ) {
+        console.log(data);
          $('#database_module').html(data);
     }); 
 }
