@@ -4,7 +4,7 @@ function control(cmd, db_id) {
   $('#main_admin_control').submit();
 }
 $(document).ready(function() {
-    if ($('#database_module')[0]) {
+    if ($('#database_module')) {
         loadDBModule();
     }
 });
