@@ -10,34 +10,13 @@
     <link rel="stylesheet" href="/admin/css/font-awesome/css/font-awesome.min.css">
     <title>Server Admin</title>
     <script src="/admin/js/jquery-3.3.1.min.js"></script>
+    <script src="/admin/js/admin.js"></script>
     <script>
       function control(cmd, db_id) {
           $('#main_admin_control').find('input[name=appCmd]').val(cmd);
           $('#main_admin_control').find('input[name=dbid]').val(db_id);
           $('#main_admin_control').submit();
       }
-      $(document).ready(function() {
-          $.ajax({
-            url: '/admin/api/api.api',
-            dataType: 'json',
-            type: 'post',
-            data:  {"cmd":"getDBMenu"},
-            success: function( data, textStatus, jQxhr ){
-              alert(1);
-            },
-            error: function( jqXhr, textStatus, errorThrown ){
-                alert(2);
-            }
-          }); 
-        /*
-          $.post( "/admin/api/api.api", {cmd:'getDBMenu'}).done(function( data ) {
-          alert( "Data Loaded: " + data );
-        });*/
-                 /*, function( data ) {
-             $('#module_menu').html( JSON.stringify(data) );
-          });*/
-      });
-      
     </script>
   </head>
 <body>
