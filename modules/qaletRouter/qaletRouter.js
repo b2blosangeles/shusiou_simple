@@ -49,7 +49,7 @@
 		};
 		this.runAdmin = function(v) {
 			var me = this;
-			var patt = /\/api\/(.+)\.api/ig;
+			var patt = /\/api\//ig;
 			if (patt.test(v)) {
 				res.send(v + '===niu');
 				return true;
