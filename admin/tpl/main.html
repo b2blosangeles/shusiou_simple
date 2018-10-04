@@ -82,7 +82,10 @@
           {if $appCmd === 'addDB' || $appCmd === 'editDB'}
           <form action="/admin/database" method="post">
               <fieldset>
-                  <legend>Setup Databse</legend>
+                  <legend> 
+                    {if $appCmd !== 'addDB'}Edit Databse Configuration{/if}
+                    {if $appCmd === 'addDB'}Add Databse Configuration{/if}
+                  </legend>
                   <div class="form-group">
                       <label for="">Config ID：</label>                                          
                       <input type="text" class="form-control"  name="host" value="{$cfgID}"/>                    
