@@ -63,24 +63,7 @@
      {/if}
  
      {if $module === 'database'}
-          <div id="module_menu"></div>
-         <form id="main_admin_control" action="/admin/database" method="post">
-           <input type="hidden" name="appCmd" value="" />
-           <input type="hidden" name="dbid" value="" />
-         </form>  
-        <div  class="col-md-12">
-          {if $appCmd !== 'addDB'}
-          <button type="button" class="btn btn-warning" onClick="control('addDB', '')">
-            <i class="icon-plus-sign-alt"></i>&nbsp;Add a new DB link
-         </button>
-          {/if}
-          {foreach from=$dbs key=key item=value}
-          <button type="button" class="btn btn-primary"  onClick="control('editDB', '{$key}')">
-            <i class="icon-pencil"></i>&nbsp;{$key}
-         </button> 
-          {/foreach}
- 
-        </div>
+          <div id="database_menu"></div>
         <div class="col-md-4"> 
           {if $appCmd === 'addDB' || $appCmd === 'editDB'}
           <form action="/admin/database" method="post">
