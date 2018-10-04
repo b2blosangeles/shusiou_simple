@@ -24,28 +24,27 @@
 					if (!req.body.dbid) {
 						data.cdb = {dbid:'', host:'', user:'', database:'', password:''};
 						data.err = null;
-					}
-					cbk(data);
-					/*
-					if (me.validation() === null) {
-						cbk({module:'database', data:(config.database) ? config.database : 
-						     {host:'', user:'', database:'', password:''}, 
-						     err : null });
-					} else if (me.validation() === true) {
-						me.saveConfig(
-							'database',
-							{host: req.body.host, user: req.body.user, password: req.body.password, database: req.body.database},
-							function() {
-								cbk({module: 'success', message: 'Success saved database configuration'});
-							}
-						);
-						
+						cbk(data);
 					} else {
-						cbk({module: 'database', 
-						     data:{host: req.body.host, user: req.body.user, password: req.body.password, database: req.body.database}, 
-						     err : me.validation()});
+						if (me.validation() === null) {
+							cbk({module:'database', data:(config.database) ? config.database : 
+							     {host:'', user:'', database:'', password:''}, 
+							     err : null });
+						} else if (me.validation() === true) {
+							me.saveConfig(
+								'database',
+								{host: req.body.host, user: req.body.user, password: req.body.password, database: req.body.database},
+								function() {
+									cbk({module: 'success', message: 'Success saved database configuration'});
+								}
+							);
+
+						} else {
+							cbk({module: 'database', 
+							     data:{host: req.body.host, user: req.body.user, password: req.body.password, database: req.body.database}, 
+							     err : me.validation()});
+						}
 					}
-					*/
 					break;
 				case '':
 					cbk({module:''});
