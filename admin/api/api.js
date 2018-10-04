@@ -14,8 +14,8 @@ auth.check(function(isAuth, cbk) {
 		return true;
 	}
 	switch (req.body.cmd) {
-		case 'getDBMenu':
-			getDBMenu(config);
+		case 'getDBModule':
+			getDBModule(config);
 			break;
 		default: 
 			res.send('');
