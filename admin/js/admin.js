@@ -10,7 +10,8 @@ $(document).ready(function() {
 });
 
 function loadDBModule(cdb) {
-    $.post( "/admin/api/api.api", {cmd:'getDBModule', module:(cdb === 'new') ? 'addDB' : 'editDB'}).done(function( data ) {
+    $.post( "/admin/api/api.api", {cmd:'getDBModule', module: (!cdb) ? '' : (cdb === 'new') ? 'addDB' : 'editDB'})
+      .done(function( data ) {
         $('#database_module').html(data);
     }); 
 }
