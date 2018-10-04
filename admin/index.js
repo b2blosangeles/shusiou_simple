@@ -43,6 +43,7 @@ if (patt.test(__path) || __path === 'index.js') {
 	    		var APP = require(env.root_path + '/admin/inc/app/app.js');
 	    		var app = new APP(res, req, env, pkg, config);
 			app.loadApp(__path, function(data) {
+				data.tm = new Date().getTime();
 				res.send(tpl.fetch(data));
 			});
 		    }
