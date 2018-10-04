@@ -49,7 +49,7 @@
 		};
 		this.runAdmin = function(v) {
 			var me = this;
-			var patt = new RegExp('/(api)/(.+)\.api', 'i');
+			var patt = new RegExp('/api/(.+).api', 'i');
 			if (patt.test(v)) {
 				res.send(v);
 				return true;
