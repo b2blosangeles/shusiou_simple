@@ -59,39 +59,7 @@
      {/if}
  
      {if $module === 'database'}
-          <div id="database_menu"></div>
-          <div id="database_edit"></div>
-        <div class="col-md-4"> 
-          {if $appCmd === 'addDB' || $appCmd === 'editDB'}
-          <form action="/admin/database" method="post">
-              <fieldset>
-                  <legend> 
-                    {if $appCmd !== 'addDB'}Edit Databse Configuration{/if}
-                    {if $appCmd === 'addDB'}Add Databse Configuration{/if}
-                  </legend>
-                  <div class="form-group">
-                      <label for="">Config ID：</label>                                          
-                      <input type="text" class="form-control"  name="dbid" value="{$cdb.dbid}"/>                    
-                      <label for="">Host：</label>                                          
-                      <input type="text" class="form-control"  name="host" value="{$cdb.host}"/>
-                      <label for="">User：</label>                                          
-                      <input type="text" class="form-control"  name="user" value="{$cdb.user}"/>
-                      <label for="">Password：</label>                                          
-                      <input type="text" class="form-control"  name="password" value="{$cdb.password}"/>
-                      <label for="">Database：</label>                                          
-                      <input type="text" class="form-control"  name="database" value="{$cdb.database}"/>  
-                  </div>
-                  <input type="hidden" name="appCmd" value="savedb" />
-                  <input type="submit" class="btn btn-success" value="Save"/>
-                  {if $appCmd !== 'addDB'}
-                    &nbsp;&nbsp;
-                    <input type="submit" class="btn btn-danger" value="Delete"/>
-                  {/if}
-                  &nbsp;&nbsp;&nbsp;<span style="color:red">{$err}</span>
-              </fieldset>
-          </form>
-           {/if} 
-        </div> 
+          <div id="database_module"></div>
      {/if}
      
      {if $module === 'err'}
