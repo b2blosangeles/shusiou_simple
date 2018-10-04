@@ -22,7 +22,7 @@
 				case 'database':
 					var data = {module: 'database', appCmd:req.body.appCmd};
 					if (!req.body.dbid) {
-						data.cdb = {host:'', user:'', database:'', password:''};
+						data.cdb = {dbid:'', host:'', user:'', database:'', password:''};
 					}
 					cbk(data);
 					/*
