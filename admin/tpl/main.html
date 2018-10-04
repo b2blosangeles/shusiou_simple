@@ -17,7 +17,7 @@
           $('#main_admin_control').submit();
       }
       $(document).ready(function() {
-          $.post( "/admin/api.api", function( data ) {
+          $.post( "/admin/api/api.api", function( data ) {
              $('#module_menu').html( JSON.stringify(data) );
           });
       });
