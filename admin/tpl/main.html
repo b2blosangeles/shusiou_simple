@@ -11,8 +11,9 @@
     <title>Server Admin</title>
     <script src="/admin/js/jquery-3.3.1.min.js"></script>
     <script>
-      function control(cmd, c_id) {
+      function control(cmd, db_id) {
           $('#main_admin_control').find('input[name=appCmd]').val(cmd);
+          $('#main_admin_control').find('input[name=dbid]').val(db_id);
           $('#main_admin_control').submit();
       }
     </script>
