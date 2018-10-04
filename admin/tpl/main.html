@@ -16,6 +16,10 @@
           $('#main_admin_control').find('input[name=dbid]').val(db_id);
           $('#main_admin_control').submit();
       }
+      $(document).ready(function() {
+          $('#module_menu').html('loading ...');
+      });
+      
     </script>
   </head>
 <body>
@@ -62,6 +66,7 @@
      {/if}
  
      {if $module === 'database'}
+          <div id="module_menu"></div>
          <form id="main_admin_control" action="/admin/database" method="post">
            <input type="hidden" name="appCmd" value="" />
            <input type="hidden" name="dbid" value="" />
