@@ -36,7 +36,7 @@ function loadTPL(fn, cbk) {
     });
 }
 function getDBMenu(data) {
-	loadTPL(env.root_path + '/admin/tpl/topMenu.html', function(tpl) {
+	loadTPL(env.root_path + '/admin/tpl/dbMenu.html', function(tpl) {
 	    res.send(tpl.fetch(data));
 	});
 }
