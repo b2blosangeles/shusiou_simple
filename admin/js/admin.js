@@ -10,7 +10,7 @@ $(document).ready(function() {
 });
 
 function loadDBModule() {
-    $.post( "/admin/api/api.api", {cmd:'getDBMenu'}).done(function( data ) {
+    $.post( "/admin/api/api.api", {cmd:'getDBModule'}).done(function( data ) {
          $('#database_module').html(data);
     }); 
 }
