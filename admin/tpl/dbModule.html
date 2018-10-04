@@ -8,13 +8,13 @@
  </button> 
   {/foreach}
 </div>
-{if $appCmd === 'edit' || $appCmd === 'addDB'}
+{if $module === 'editDB' || $appCmd === 'addDB'}
 <div  class="col-md-12">
       <form action="/admin/database" method="post">
           <fieldset>
               <legend> 
-                {if $appCmd === 'edit'}Edit Databse Configuration{/if}
-                {if $appCmd === 'addDB'}Add Databse Configuration{/if}
+                {if $module === 'editDB'}Edit Databse Configuration{/if}
+                {if $module === 'addDB'}Add Databse Configuration{/if}
               </legend>
               <div class="form-group">
                   <label for="">Config ID：</label>                                          
@@ -30,7 +30,7 @@
               </div>
               <input type="hidden" name="appCmd" value="savedb" />
               <input type="submit" class="btn btn-success" value="Save"/>
-              {if $appCmd !== 'addDB'}
+              {if $module === 'editDB'}
                 &nbsp;&nbsp;
                 <input type="submit" class="btn btn-danger" value="Delete"/>
               {/if}
