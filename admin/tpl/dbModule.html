@@ -1,9 +1,9 @@
 <div  class="col-md-12">
-  <button type="button" class="btn btn-warning" onClick="dbEdit('')">
+  <button type="button" class="btn btn-warning" onClick="loadDBModule('new')">
     <i class="icon-plus-sign-alt"></i>&nbsp;Add a new DB link
  </button>
   {foreach from=$dbs key=key item=value}
-  <button type="button" class="btn btn-primary"  onClick="dbEdit('{$key}')">
+  <button type="button" class="btn btn-primary"  onClick="loadDBModule('{$key}')">
     <i class="icon-pencil"></i>&nbsp;{$key}
  </button> 
   {/foreach}
