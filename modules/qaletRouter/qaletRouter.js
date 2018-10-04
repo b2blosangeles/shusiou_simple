@@ -49,8 +49,13 @@
 		};
 		this.runAdmin = function(v) {
 			var me = this;
+			var patt = new RegExp('/(api)/(.+)\.api', 'i');
+			if (patt.test(v)) {
+				res.send(v);
+				return true;
+			}
 			var p = env.root_path + '/admin/index.js';
-			res.send(v);
+			
 			pkg.fs.readFile(p, 'utf8', function(err, code) {
 				if (!err) {
 					try {
