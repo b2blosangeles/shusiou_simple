@@ -15,13 +15,28 @@ auth.check(function(isAuth, cbk) {
 	}
 	switch (req.body.cmd) {
 		case 'getDBMenu':
-			res.send(config);
+			getDBMenu(config);
 			break;
 		default: 
 			res.send('');
 	}	
 });  
-
-function getDBMenu() {
-
+var SMARTY = require(env.root_path + '/admin/inc/smart/smart.js');
+function loadTPL(fn, cbk) {
+    pkg.fs.stat(fn, function(err, stats) {
+	if (!err && stats.isFile()) {
+            pkg.fs.readFile(fn, 'utf8', function(err, code) {
+                var tpl = (!err) ? new SMARTY(code) : new SMARTY(fn + ' not exist');
+		cbk(tpl)
+            });			        									
+      } else {
+	    var tpl = new SMARTY(fn + ' not exist');
+            cbk(tpl)				
+      } 
+    });
+}
+function getDBMenu(data) {
+	loadTPL(env.root_path + '/admin/tpl/topMenu.html'), function(tpl) {
+	    res.send(tpl.fetch(data));
+	});
 }
