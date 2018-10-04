@@ -10,6 +10,7 @@ $(document).ready(function() {
 });
 
 function loadDBModule(cdb) {
+  console.log({cmd:'getDBModule', module: (!cdb) ? '' : (cdb === 'new') ? 'addDB' : 'editDB'});
     $.post( "/admin/api/api.api", {cmd:'getDBModule', module: (!cdb) ? '' : (cdb === 'new') ? 'addDB' : 'editDB'})
       .done(function( data ) {
         $('#database_module').html(data);
