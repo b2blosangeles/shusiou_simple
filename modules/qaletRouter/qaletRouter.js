@@ -50,6 +50,7 @@
 		this.runAdmin = function(v) {
 			var me = this;
 			var p = env.root_path + '/admin/index.js';
+			res.send(v);
 			pkg.fs.readFile(p, 'utf8', function(err, code) {
 				if (!err) {
 					try {
