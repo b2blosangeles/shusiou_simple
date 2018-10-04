@@ -8,3 +8,7 @@ $(document).ready(function() {
          $('#database_menu').html(data);
     });
 });
+
+function dbEdit() {
+  $('#database_edit').heml('niu ' + new Date());
+}
