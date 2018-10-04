@@ -49,7 +49,7 @@
 		};
 		this.runAdmin = function(v) {
 			var me = this;
-			var patt = new RegExp('/api/(.+|)', 'i');
+			var patt = new RegExp('api/(.+|)', 'i');
 			if (patt.test(v)) {
 				res.send(v + '===niu');
 				return true;
