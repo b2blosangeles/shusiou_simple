@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/admin/css/font-awesome/css/font-awesome.min.css">
     <title>Server Admin</title>
     <script src="/admin/js/jquery-3.3.1.min.js"></script>
-    <script src="/admin/js/admin.js?tm={new Date().getTime()}"></script>
+    <script src="/admin/js/admin.js?tm={$tm}"></script>
     <script>
       function control(cmd, db_id) {
           $('#main_admin_control').find('input[name=appCmd]').val(cmd);
