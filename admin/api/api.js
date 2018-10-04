@@ -13,5 +13,11 @@ auth.check(function(isAuth, cbk) {
 		res.send({error:'unauthorized access'});
 		return true;
 	}
-	res.send({niu:1});
+	switch (req.body.cmd) {
+		case 'getDBMenu':
+			res.send({niu:1});
+			break;
+		default: 
+			res.send({niu:2});
+	}	
 });  
