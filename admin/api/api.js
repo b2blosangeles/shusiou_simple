@@ -13,5 +13,5 @@ auth.check(function(isAuth, cbk) {
 		res.send({error:'unauthorized access'});
 		return true;
 	}
-	res.send(req.body);
+	res.send({niu:1});
 });  
