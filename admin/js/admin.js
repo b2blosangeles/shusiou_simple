@@ -18,3 +18,14 @@ function loadDBModule(cdb) {
         $('#database_module').html(data);
     }); 
 }
+function saveDBCFG() {
+    alert('saveDBCFG');
+    return true;
+    $.post( "/admin/api/api.api", {
+          cmd:'getDBModule', 
+          module: (!cdb) ? '' : (cdb === 'new') ? 'addDB' : 'editDB',
+          cdb : (cdb === 'new') ? '' : cdb})
+      .done(function( data ) {
+        $('#database_module').html(data);
+    }); 
+}
