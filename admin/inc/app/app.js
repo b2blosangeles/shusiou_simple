@@ -20,6 +20,9 @@
 					}
 					break;
 				case 'database':
+					var data = {appCmd:req.body.appCmd};
+					cbk(data);
+					/*
 					if (me.validation() === null) {
 						cbk({module:'database', data:(config.database) ? config.database : 
 						     {host:'', user:'', database:'', password:''}, 
@@ -37,7 +40,8 @@
 						cbk({module: 'database', 
 						     data:{host: req.body.host, user: req.body.user, password: req.body.password, database: req.body.database}, 
 						     err : me.validation()});
-					}	
+					}
+					*/
 					break;
 				case '':
 					cbk({module:''});
