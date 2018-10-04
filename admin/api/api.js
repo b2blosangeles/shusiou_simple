@@ -15,9 +15,13 @@ auth.check(function(isAuth, cbk) {
 	}
 	switch (req.body.cmd) {
 		case 'getDBMenu':
-			res.send({niu:1});
+			res.send(config);
 			break;
 		default: 
-			res.send({niu:2});
+			res.send('');
 	}	
 });  
+
+function getDBMenu() {
+
+}
