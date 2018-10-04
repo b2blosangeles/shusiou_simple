@@ -9,9 +9,8 @@ $(document).ready(function() {
     }
 });
 
-function loadDBModule() {
-    $.post( "/admin/api/api.api", {cmd:'getDBModule'}).done(function( data ) {
-        console.log(data);
-         $('#database_module').html(data);
+function loadDBModule(cdb) {
+    $.post( "/admin/api/api.api", {cmd:'getDBModule', module:(cdb === 'new') ? 'addDB' : 'editDB'}).done(function( data ) {
+        $('#database_module').html(data);
     }); 
 }
