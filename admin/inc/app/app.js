@@ -21,6 +21,9 @@
 					break;
 				case 'database':
 					var data = {module: 'database', appCmd:req.body.appCmd};
+					if (!req.body.dbid) {
+						data.cdb = {host:'', user:'', database:'', password:''};
+					}
 					cbk(data);
 					/*
 					if (me.validation() === null) {
