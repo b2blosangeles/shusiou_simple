@@ -20,7 +20,7 @@
 					}
 					break;
 				case 'database':
-					var data = {appCmd:req.body.appCmd};
+					var data = {module: 'database', appCmd:req.body.appCmd};
 					cbk(data);
 					/*
 					if (me.validation() === null) {
