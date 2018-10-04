@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="/admin/css/Bootstrapv4.1.3.css">
     <link rel="stylesheet" href="/admin/css/font-awesome/css/font-awesome.min.css">
     <title>Server Admin</title>
+    <script src="/admin/js/jquery-3.3.1.min.js"></script>
     <script>
       function control(cmd) {
-        document.getElementById('main_admin_control').appCmd = cmd;
-        document.getElementById('main_admin_control').submit();
+          $('#main_admin_control').find('input[name=appCmd]').val(cmd);
+          $('#main_admin_control').submit();
       }
     </script>
   </head>
