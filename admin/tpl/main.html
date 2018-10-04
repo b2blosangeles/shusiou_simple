@@ -101,8 +101,10 @@
                   </div>
                   <input type="hidden" name="appCmd" value="savedb" />
                   <input type="submit" class="btn btn-success" value="Save"/>
+                  {if $appCmd !== 'addDB'}
                     &nbsp;&nbsp;
-                  <input type="submit" class="btn btn-danger" value="Delete"/>
+                    <input type="submit" class="btn btn-danger" value="Delete"/>
+                  {/if}
                   &nbsp;&nbsp;&nbsp;<span style="color:red">{$err}</span>
               </fieldset>
           </form>
