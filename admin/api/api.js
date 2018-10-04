@@ -36,8 +36,8 @@ function loadTPL(fn, cbk) {
     });
 }
 function getDBModule(data) {
-	if (data.module == 'addDB') {
-		data.form = {dbid:'', host:'', user:'', database:'', password:''};
+	if (data.module == 'addDB' && !data.form) {
+		data.form = {dbid:'', host:'', user:'', database:'', password:'', err: null};
 	}
 	loadTPL(env.root_path + '/admin/tpl/dbModule.html', function(tpl) {
 	    res.send(tpl.fetch(data));
