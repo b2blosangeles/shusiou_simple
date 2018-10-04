@@ -19,7 +19,8 @@
               </legend>
               <div class="form-group">
                   <label for="">Config ID：</label>                                          
-                  <input type="text" class="form-control"  name="dbid" value="{$form.dbid}"/>                    
+                  <input type="text" class="form-control"  name="dbid" value="{$form.dbid}" 
+                         {if $module === 'editDB'}readonly{/if} />                    
                   <label for="">Host：</label>                                          
                   <input type="text" class="form-control"  name="host" value="{$form.host}"/>
                   <label for="">User：</label>                                          
