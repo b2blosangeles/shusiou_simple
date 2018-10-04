@@ -62,7 +62,7 @@
  
      {if $module === 'database'}
          <form id="main_admin_control" action="/admin/database" method="post">
-           <input type="text" name="appCmd" value="" />
+           <input type="hidden" name="appCmd" value="" />
          </form>  
         <div  class="col-md-12">
           <button type="button" class="btn btn-warning" onClick="control('addDB')">
