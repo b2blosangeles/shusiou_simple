@@ -11,7 +11,8 @@
     <title>Server Admin</title>
     <script>
       function control(cmd) {
-        alert(cmd);
+        document.getElementById('main_admin_control').appCmd = cmd;
+        document.getElementById('main_admin_control').submit();
       }
     </script>
   </head>
@@ -60,7 +61,7 @@
  
      {if $module === 'database'}
          <form id="main_admin_control" action="/admin/database" method="post">
-           <input type="hidden" name="appCmd" value="savedb" />
+           <input type="hidden" name="appCmd" value="" />
          </form>  
         <div  class="col-md-12">
           <button type="button" class="btn btn-warning" onClick="control('addDB')">
