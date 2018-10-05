@@ -17,6 +17,9 @@ auth.check(function(isAuth, cbk) {
 		case 'getDBModule':
 			getDBModule({module:req.body.module, cdb : req.body.cdb, form:req.body.form});
 			break;
+		case 'deleteDBCFG':
+			deleteDBCFG(req.body.cdb);
+			break;
 		case 'saveDBCFG':
 			saveDBCFG(req.body.formData);
 			break;		
@@ -62,6 +65,12 @@ function saveDBCFG(data) {
 		res.send(v);
 	}
 }
+function deleteDBCFG(cdb) {
+	saveDBConfig(cdb, null, function() {
+		res.send({});
+	}
+}
+
 function validationDBCFG(data) {
 	if (!data) return {error:'Form Data Error!'};
 	if (!data.dbid) return {error:'Missing Config ID'};
