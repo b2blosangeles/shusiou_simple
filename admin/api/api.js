@@ -49,12 +49,12 @@ function getDBModule(data) {
 }
 function saveDBCFG(data) {
 	var v = validationDBCFG(data);
-	if (v) {
+	if (v === true) {
 		res.send(data);
 	} else {
 		res.send(v);
 	}
 }
 function validationDBCFG(data) {
-	return true;
+	return {error:'invalid'};
 }
