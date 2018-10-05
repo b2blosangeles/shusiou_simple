@@ -19,12 +19,13 @@ function loadDBModule(cdb) {
     }); 
 }
 function saveDBCFG() {
-    alert($('#DBCFG_FORM')[0].dbid.value);
-    return true;
+    var formData = {dbid : $('#DBCFG_FORM')[0].dbid.value, host : $('#DBCFG_FORM')[0].host.value, 
+                user : $('#DBCFG_FORM')[0].user.value, password : $('#DBCFG_FORM')[0].password.value, 
+                database : $('#DBCFG_FORM')[0].database.value};
+
     $.post( "/admin/api/api.api", {
-          cmd:'getDBModule', 
-          module: (!cdb) ? '' : (cdb === 'new') ? 'addDB' : 'editDB',
-          cdb : (cdb === 'new') ? '' : cdb})
+          cmd:'saveDBModule', 
+          formData: formData})
       .done(function( data ) {
         $('#database_module').html(data);
     }); 
