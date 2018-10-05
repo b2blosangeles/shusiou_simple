@@ -56,9 +56,10 @@ function saveDBCFG(data) {
 	}
 }
 function validationDBCFG(data) {
-	if (!data || !data.dbid) {
-		return {error:'erroo'};
-	} else {
-		return data;
-	}
+	if (!data) return {error:'Form Data Error!'}}
+	
+	if (!data.dbid) return {error:'Missing dbid'};
+	
+	return data;
+
 }
