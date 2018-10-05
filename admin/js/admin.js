@@ -15,7 +15,11 @@ function loadDBModule(cdb, formData) {
           module: (!cdb) ? '' : (cdb === 'new') ? 'addDB' : 'editDB',
           cdb : (cdb === 'new') ? '' : cdb, form:formData})
       .done(function( data ) {
-        $('#database_module').html(data);
+          if (data.autherror) {
+              reheader();
+          } else
+            $('#database_module').html(data);
+          }
     }); 
 }
 function saveDBCFG() {
@@ -27,11 +31,16 @@ function saveDBCFG() {
           cmd:'saveDBCFG', 
           formData: formData})
       .done(function( data ) {
-          if (data.error) {
+          if (data.autherror) {
+              reheader();
+          } else if (data.error) {
             formData.error = data.error;
             loadDBModule('new', formData)
           } else {
              loadDBModule();
           }
     }); 
+}
+functoin reheader() {
+    window.location.href = '/admin/';
 }
