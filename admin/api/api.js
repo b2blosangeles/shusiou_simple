@@ -43,13 +43,15 @@ function getDBModule(data) {
 		data.form = {dbid:'', host:'', user:'', database:'', password:'', error: null};
 	}
 	loadTPL(env.root_path + '/admin/tpl/dbModule.html', function(tpl) {
-	    res.send(tpl.fetch(data));
+		data.dbs = config.database;
+	    	res.send(tpl.fetch(data));
 	});
 }
 function saveDBCFG(data) {
 	var v = validationDBCFG(data);
 	if (v === true) {
 		saveDBConfig(data.dbid, data, function() {
+			
 			res.send(data);
 		})
 	} else {
