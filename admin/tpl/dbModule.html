@@ -1,7 +1,7 @@
 <div  class="col-md-12">
   {if $cdb !== 'new'}
   <button type="button" class="btn btn-warning" onClick="loadDBModule('new')">
-    <i class="icon-plus-sign-alt"></i>&nbsp;Add a new DB link
+    <i class="icon-plus-sign-alt"></i>&nbsp;Add a new DB configuration
  </button>
   {/if}
   {foreach from=$dbs key=key item=value}
@@ -40,7 +40,7 @@
               </button>
               {if $cdb !== 'new'}
                 &nbsp;&nbsp;
-                <button type="submit" class="btn btn-danger"><i class="icon-trash"></i>&nbsp;&nbsp;Delete</button>
+                <button type="submit" class="btn btn-danger"  onClick="deleteDBCFG($cdb)"><i class="icon-trash"></i>&nbsp;&nbsp;Delete</button>
               {/if}
               &nbsp;&nbsp;&nbsp;<span style="color:red">{$form.error}</span>
           </fieldset>
