@@ -63,7 +63,7 @@ function validationDBCFG(data) {
 	if (!data.host) return {error:'Missing host'};
 	if (!data.user) return {error:'Missing user'};
 	if (!data.database) return {error:'Missing database'};
-	return data;
+	return true;
 }
 function saveDBConfig(key, data, cbk) {
 	config.database[key] = data;
