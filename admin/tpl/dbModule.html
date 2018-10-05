@@ -38,7 +38,7 @@
               <button type="button" class="btn btn-success" onClick="saveDBCFG()">
                   <i class="icon-cloud-upload"></i>&nbsp;&nbsp;Save
               </button>
-              {if $module === 'editDB'}
+              {if $cdb !== 'new'}
                 &nbsp;&nbsp;
                 <button type="submit" class="btn btn-danger"><i class="icon-trash"></i>&nbsp;&nbsp;Delete</button>
               {/if}
