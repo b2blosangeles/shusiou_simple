@@ -1,18 +1,20 @@
 <div  class="col-md-12">
-  {if $module !== 'addDB'}
+  {if $cbd !== 'new'}
   <button type="button" class="btn btn-warning" onClick="loadDBModule('new')">
     <i class="icon-plus-sign-alt"></i>&nbsp;Add a new DB link
  </button>
   {/if}
   {foreach from=$dbs key=key item=value}
-  <button type="button" class="btn btn-primary"  onClick="loadDBModule('{$key}')">
-    <i class="icon-pencil"></i>&nbsp;{$key}
- </button> 
+    {if $cbd !== $key}
+      <button type="button" class="btn btn-primary"  onClick="loadDBModule('{$key}')">
+        <i class="icon-pencil"></i>&nbsp;{$key}
+     </button> 
+    {/if}
   {/foreach}
   ==={$cdb}====
 </div>
 
-{if $module === 'addDB' || $module === 'editDB'}
+{if $cbd}
 <div  class="col-md-12">
       <form id="DBCFG_FORM">
           <fieldset>
