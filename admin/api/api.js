@@ -48,12 +48,6 @@ function getDBModule(data) {
 	});
 }
 function saveDBCFG(data) {
-	req.send(data);
+	res.send(data);
 	return true;
-	if (data.module == 'addDB' && !data.form) {
-		data.form = {dbid:'', host:'', user:'', database:'', password:'', err: null};
-	}
-	loadTPL(env.root_path + '/admin/tpl/dbModule.html', function(tpl) {
-	    res.send(tpl.fetch(data));
-	});
 }
