@@ -44,6 +44,7 @@ function getDBModule(data) {
 	} 
 	if (data.cdb !== 'new' && (config.database) && (config.database[data.cdb]) && !data.form) {
 		data.form = config.database[data.cdb];
+		data.form.error = null;
 	}
 	loadTPL(env.root_path + '/admin/tpl/dbModule.html', function(tpl) {
 		data.dbs = config.database;
