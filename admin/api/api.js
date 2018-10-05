@@ -15,7 +15,7 @@ auth.check(function(isAuth, cbk) {
 	}
 	switch (req.body.cmd) {
 		case 'getDBModule':
-			getDBModule({module:req.body.module, cdb : '---', form:req.body.form});
+			getDBModule({module:req.body.module, cdb : req.body.cdb, form:req.body.form});
 			break;
 		case 'saveDBCFG':
 			saveDBCFG(req.body.formData);
