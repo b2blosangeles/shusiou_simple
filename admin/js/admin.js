@@ -21,13 +21,14 @@ function loadDBModule(cdb, formData) {
           }
     }); 
 }
-function saveDBCFG() {
+function saveDBCFG(cdb) {
     var formData = {dbid : $('#DBCFG_FORM')[0].dbid.value, host : $('#DBCFG_FORM')[0].host.value, 
                 user : $('#DBCFG_FORM')[0].user.value, password : $('#DBCFG_FORM')[0].password.value, 
                 database : $('#DBCFG_FORM')[0].database.value};
 
     $.post( "/admin/api/api.api", {
           cmd:'saveDBCFG', 
+          cdb : cdb,
           formData: formData})
       .done(function( data ) {
           if (data.autherror) {
