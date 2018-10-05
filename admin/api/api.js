@@ -68,7 +68,7 @@ function saveDBCFG(data) {
 function deleteDBCFG(cdb) {
 	saveDBConfig(cdb, null, function() {
 		res.send({});
-	}
+	});
 }
 
 function validationDBCFG(data) {
