@@ -35,7 +35,7 @@ function saveDBCFG(cdb) {
               reheader();
           } else if (data.error) {
             formData.error = data.error;
-            loadDBModule('new', formData)
+            loadDBModule(cdb, formData)
           } else {
              loadDBModule();
           }
