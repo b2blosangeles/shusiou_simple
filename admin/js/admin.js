@@ -24,7 +24,7 @@ function saveDBCFG() {
                 database : $('#DBCFG_FORM')[0].database.value};
 
     $.post( "/admin/api/api.api", {
-          cmd:'saveDBModule', 
+          cmd:'saveDBCFG', 
           formData: formData})
       .done(function( data ) {
         $('#database_module').html(data);
