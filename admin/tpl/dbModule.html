@@ -6,12 +6,12 @@
   {/if}
   {foreach from=$dbs key=key item=value}
     {if $cdb !== $key}
-      <button type="button" class="btn btn-primary"  onClick="loadDBModule('{$key}')">
+      <button type="button" class="btn btn-outline-primary"  onClick="loadDBModule('{$key}')">
         <i class="icon-pencil"></i>&nbsp;{$key}
      </button> 
     {/if}
   {/foreach}
-  ==={$cdb}====
+
 </div>
 
 {if $cdb}
