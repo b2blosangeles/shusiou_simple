@@ -13,7 +13,7 @@ function loadDBModule(cdb, formData) {
     $.post( "/admin/api/api.api", {
           cmd:'getDBModule', 
           module: (!cdb) ? '' : (cdb === 'new') ? 'addDB' : 'editDB',
-          cdb : (cdb === 'new') ? '' : cdb, form.formData})
+          cdb : (cdb === 'new') ? '' : cdb, form:formData})
       .done(function( data ) {
         $('#database_module').html(data);
     }); 
