@@ -56,5 +56,5 @@ function saveDBCFG(data) {
 	}
 }
 function validationDBCFG(data) {
-	return true;
+	return {error:'erroo'};
 }
