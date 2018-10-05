@@ -41,6 +41,7 @@ function saveDBCFG() {
     }); 
 }
 function deleteDBCFG(cdb) {
+    alert(cdb);
     $.post( "/admin/api/api.api", {
           cmd:'deleteDBCFG', 
           cdb: cdb})
