@@ -41,6 +41,6 @@ function saveDBCFG() {
           }
     }); 
 }
-functoin reheader() {
+function reheader() {
     window.location.href = '/admin/';
 }
