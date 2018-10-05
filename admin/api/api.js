@@ -10,7 +10,7 @@ var auth = new AUTH(res, req, env, pkg, config);
 
 auth.check(function(isAuth, cbk) {
 	if (!isAuth)  {
-		res.send({error:'unauthorized access'});
+		res.send({autherror:'unauthorized access'});
 		return true;
 	}
 	switch (req.body.cmd) {
