@@ -40,6 +40,18 @@ function saveDBCFG() {
           }
     }); 
 }
+function deleteDBCFG(cdb) {
+    $.post( "/admin/api/api.api", {
+          cmd:'deleteDBCFG', 
+          cdb: cdb})
+      .done(function( data ) {
+          if (data.autherror) {
+              reheader();
+          } else {
+             loadDBModule();
+          }
+    }); 
+}
 function reheader() {
     window.location.href = '/admin/';
 }
