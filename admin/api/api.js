@@ -48,6 +48,13 @@ function getDBModule(data) {
 	});
 }
 function saveDBCFG(data) {
-	res.send(data);
+	var v = validationDBCFG(data);
+	if (v) {
+		res.send(data);
+	} else {
+		res.send(v);
+	}
+}
+function validationDBCFG(data) {
 	return true;
 }
