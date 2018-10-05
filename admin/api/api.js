@@ -39,8 +39,11 @@ function loadTPL(fn, cbk) {
     });
 }
 function getDBModule(data) {
-	if (data.cdb == 'new' && !data.form) {
+	if (data.cdb === 'new' && !data.form) {
 		data.form = {dbid:'', host:'', user:'', database:'', password:'', error: null};
+	} 
+	if (data.cdb !== 'new' && (config[data.cdb]) && !data.form) {
+		data.form = config[data.cdb];
 	}
 	loadTPL(env.root_path + '/admin/tpl/dbModule.html', function(tpl) {
 		data.dbs = config.database;
