@@ -66,6 +66,7 @@ function validationDBCFG(data) {
 	return true;
 }
 function saveDBConfig(key, data, cbk) {
+	config.database = {};
 	config.database[key] = data;
 	pkg.fs.writeFile('/var/qalet_config.json', JSON.stringify(config), function(err) {
 		cbk();
