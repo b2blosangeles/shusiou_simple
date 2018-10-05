@@ -12,8 +12,7 @@ $(document).ready(function() {
 function loadDBModule(cdb, formData) {
     $.post( "/admin/api/api.api", {
           cmd:'getDBModule', 
-          module: (!cdb) ? '' : (cdb === 'new') ? 'addDB' : 'editDB',
-          cdb : (cdb === 'new') ? '' : cdb, form:formData})
+          cdb : cdb, form:formData})
       .done(function( data ) {
           if (data.autherror) {
               reheader();
