@@ -17,6 +17,10 @@ auth.check(function(isAuth, cbk) {
 		case 'getDBModule':
 			getDBModule({module:req.body.module, cdb : {} });
 			break;
+		case 'saveDBCFG':
+			saveDBCFG(req.body.formData);
+			break;			
+			
 		default: 
 			res.send('');
 	}	
@@ -36,6 +40,14 @@ function loadTPL(fn, cbk) {
     });
 }
 function getDBModule(data) {
+	if (data.module == 'addDB' && !data.form) {
+		data.form = {dbid:'', host:'', user:'', database:'', password:'', err: null};
+	}
+	loadTPL(env.root_path + '/admin/tpl/dbModule.html', function(tpl) {
+	    res.send(tpl.fetch(data));
+	});
+}
+function saveDBCFG(data) {
 	req.send(data);
 	return true;
 	if (data.module == 'addDB' && !data.form) {
