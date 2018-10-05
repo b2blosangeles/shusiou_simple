@@ -36,6 +36,8 @@ function loadTPL(fn, cbk) {
     });
 }
 function getDBModule(data) {
+	req.send(data);
+	return true;
 	if (data.module == 'addDB' && !data.form) {
 		data.form = {dbid:'', host:'', user:'', database:'', password:'', err: null};
 	}
