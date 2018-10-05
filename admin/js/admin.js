@@ -19,7 +19,7 @@ function loadDBModule(cdb) {
     }); 
 }
 function saveDBCFG() {
-    alert($('#DBCFG_FORM')[0].dbid);
+    alert($('#DBCFG_FORM')[0].dbid.value);
     return true;
     $.post( "/admin/api/api.api", {
           cmd:'getDBModule', 
