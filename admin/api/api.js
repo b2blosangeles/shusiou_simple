@@ -21,7 +21,7 @@ auth.check(function(isAuth, cbk) {
 			deleteDBCFG(req.body.cdb);
 			break;
 		case 'saveDBCFG':
-			saveDBCFG(req.body.formData);
+			saveDBCFG(req.body.cdb, req.body.formData);
 			break;		
 		default: 
 			res.send(config);
@@ -54,11 +54,10 @@ function getDBModule(data) {
 	    	res.send(tpl.fetch(data));
 	});
 }
-function saveDBCFG(data) {
-	var v = validationDBCFG(data);
+function saveDBCFG(cdb, data) {
+	var v = validationDBCFG(cdb, data);
 	if (v === true) {
 		saveDBConfig(data.dbid, data, function() {
-			
 			res.send(data);
 		})
 	} else {
@@ -71,12 +70,12 @@ function deleteDBCFG(cdb) {
 	});
 }
 
-function validationDBCFG(data) {
+function validationDBCFG(cdb, data) {
 	if (!data) return {error:'Form Data Error!'};
-	if (!data.dbid) return {error:'Missing Config ID'};
-	if (!data.host) return {error:'Missing host'};
-	if (!data.user) return {error:'Missing user'};
-	if (!data.database) return {error:'Missing database'};
+	if (!data.dbid) return {error:'Missing Config ID' + cdb};
+	if (!data.host) return {error:'Missing host' + cdb};
+	if (!data.user) return {error:'Missing user' + cdb};
+	if (!data.database) return {error:'Missing database' + cdb};
 	return true;
 }
 function saveDBConfig(key, data, cbk) {
