@@ -73,7 +73,7 @@ function deleteDBCFG(cdb) {
 function validationDBCFG(cdb, data) {
 	if (!data) return {error:'Form Data Error!'};
 	if (!data.dbid) return {error:'Missing Config ID'};
-	if (cdb === data.dbid) return {error:'Dublicated Missing Config ID');
+	if (cdb === data.dbid) return {error:'Dublicated Config ID');
 	if (!data.host) return {error:'Missing host'};
 	if (!data.user) return {error:'Missing user'};
 	if (!data.database) return {error:'Missing database'};
