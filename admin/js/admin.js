@@ -27,6 +27,6 @@ function saveDBCFG() {
           cmd:'saveDBCFG', 
           formData: formData})
       .done(function( data ) {
-        $('#database_module').html(data);
+        $('#database_module').html(JSON.stringify(data));
     }); 
 }
