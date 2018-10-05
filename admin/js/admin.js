@@ -28,6 +28,7 @@ function saveDBCFG() {
           formData: formData})
       .done(function( data ) {
           if (data.error) {
+            formData.error = data.error;
             loadDBModule('new', formData)
           } else {
              loadDBModule();
