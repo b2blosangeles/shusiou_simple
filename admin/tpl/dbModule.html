@@ -1,11 +1,11 @@
 <div  class="col-md-12">
-  {if $cbd !== 'new'}
+  {if $cdb !== 'new'}
   <button type="button" class="btn btn-warning" onClick="loadDBModule('new')">
     <i class="icon-plus-sign-alt"></i>&nbsp;Add a new DB link
  </button>
   {/if}
   {foreach from=$dbs key=key item=value}
-    {if $cbd !== $key}
+    {if $cdb !== $key}
       <button type="button" class="btn btn-primary"  onClick="loadDBModule('{$key}')">
         <i class="icon-pencil"></i>&nbsp;{$key}
      </button> 
