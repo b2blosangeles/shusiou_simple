@@ -22,7 +22,7 @@ auth.check(function(isAuth, cbk) {
 			break;			
 			
 		default: 
-			res.send('');
+			res.send(config);
 	}	
 });  
 var SMARTY = require(env.root_path + '/admin/inc/smart/smart.js');
@@ -50,7 +50,9 @@ function getDBModule(data) {
 function saveDBCFG(data) {
 	var v = validationDBCFG(data);
 	if (v === true) {
-		res.send(data);
+		saveDBConfig(data.dbid, data, function() {
+			res.send(data);
+		})
 	} else {
 		res.send(v);
 	}
@@ -62,4 +64,10 @@ function validationDBCFG(data) {
 	if (!data.user) return {error:'Missing user'};
 	if (!data.database) return {error:'Missing database'};
 	return data;
+}
+function saveDBConfig(key, data, cbk) {
+	config.database[key] = data;
+	pkg.fs.writeFile('/var/qalet_config.json', JSON.stringify(config), function(err) {
+		cbk();
+	});
 }
