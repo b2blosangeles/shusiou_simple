@@ -17,7 +17,7 @@ function loadDBModule(cdb, formData) {
       .done(function( data ) {
           if (data.autherror) {
               reheader();
-          } else
+          } else {
             $('#database_module').html(data);
           }
     }); 
