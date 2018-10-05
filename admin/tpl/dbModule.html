@@ -35,7 +35,7 @@
                   <label for="">Database：</label>                                          
                   <input type="text" class="form-control"  name="database" value="{$form.database}"/>  
               </div>
-              <button type="button" class="btn btn-success" onClick="saveDBCFG($cdb)">
+              <button type="button" class="btn btn-success" onClick="saveDBCFG('{$cdb}')">
                   <i class="icon-cloud-upload"></i>&nbsp;&nbsp;Save
               </button>
               {if $cdb !== 'new'}
