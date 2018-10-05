@@ -20,7 +20,9 @@ auth.check(function(isAuth, cbk) {
 		case 'saveDBCFG':
 			saveDBCFG(req.body.formData);
 			break;			
-			
+		case 'getDBConfigs':
+			res.send(config.database);
+			break;			
 		default: 
 			res.send(config);
 	}	
