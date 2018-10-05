@@ -56,6 +56,7 @@ function saveDBCFG(data) {
 	}
 }
 function validationDBCFG(data) {
+	alert(JSON.stringify(data));
 	if (!data.form.dbid) {
 		return {error:'erroo'};
 	} else {
