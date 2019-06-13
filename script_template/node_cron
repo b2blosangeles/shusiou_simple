@@ -46,7 +46,7 @@ export NODE_PATH=$NODE_PATH
  
 start() {
         echo "Starting $NAME"
-        /usr/bin/forever --pidFile $PIDFILE --sourceDir $APPLICATION_DIRECTORY \
+        /usr/local/lib/node_modules/forever/bin/forever --pidFile $PIDFILE --sourceDir $APPLICATION_DIRECTORY \
                 -a -l $LOGFILE --minUptime 5000 --spinSleepTime 2000 \
                 start $APPLICATION_START &
         RETVAL=$?
@@ -71,7 +71,7 @@ restart() {
  
 status() {
         echo "Status for $NAME:"
-        /usr/bin/forever list
+        /usr/local/lib/node_modules/forever/bin/forever list
         RETVAL=$?
 }
  
